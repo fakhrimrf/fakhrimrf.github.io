@@ -1,233 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Nurul Fakhri Ma'arif</title>
-  <style>
-    /* Desain Dasar */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f4f7f6;
-      margin: 0;
-      padding: 0;
-    }
-    a {
-      color: #0073b1;
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurul Fakhri Ma'arif | Civil & Structural Engineer</title>
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    /* Bagian Header / Atas */
-    header {
-      background-color: #2c3e50;
-      color: #ffffff;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      letter-spacing: 1px;
-    }
-    header h2 {
-      margin: 10px 0 20px 0;
-      font-size: 1.2rem;
-      color: #1abc9c;
-      font-weight: 400;
-      border: none;
-      padding: 0;
-    }
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
-    }
-    .contact-info a { color: #1abc9c; }
-
-    /* Bagian Konten Utama */
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .section {
-      background: #ffffff;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    }
-    .section h2 {
-      border-bottom: 2px solid #1abc9c;
-      padding-bottom: 0.5rem;
-      color: #2c3e50;
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-    }
-    
-    /* Item Pekerjaan / Edukasi */
-    .item { margin-bottom: 1.8rem; }
-    .item:last-child { margin-bottom: 0; }
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-    }
-    .item-header h3 {
-      margin: 0 0 5px 0;
-      color: #34495e;
-    }
-    .item-company {
-      font-weight: 600;
-      color: #7f8c8d;
-      margin-bottom: 10px;
-    }
-    .item-date {
-      font-size: 0.9rem;
-      color: #95a5a6;
-      font-style: italic;
-    }
-    .item ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-    .item li { margin-bottom: 5px; }
-  </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        navy: '#0f172a',
+                        steel: '#334155',
+                        accent: '#2563eb'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-  <header>
-    <h1>NURUL FAKHRI MA'ARIF </h1>
-    <h2>Civil Engineer [cite: 34]</h2>
-    <div class="contact-info">
-      <span>📍 Jakarta [cite: 2]</span>
-      <span>📞 081299645659 [cite: 2]</span>
-      <span>✉️ <a href="mailto:fakhri31102@gmail.com">fakhri31102@gmail.com</a> [cite: 2]</span>
-      <span>🔗 <a href="https://www.linkedin.com/in/fakhrimrf/" target="_blank">LinkedIn Profile</a> [cite: 2]</span>
-    </div>
-  </header>
-
-  <div class="container">
-    
-    <div class="section">
-      <h2>Summary [cite: 3]</h2>
-      <p>Highly motivated Civil Engineering graduate from Universitas Gadjah Mada with a solid foundation in construction management and field operations. [cite: 4] Gained valuable practical exposure as a Site Supervisor Intern, supporting the management team in daily progress documentation, timeline tracking, and quality monitoring. [cite: 5] Complemented by active involvement in campus organizations and event management, which developed strong teamwork, communication, and coordination skills. [cite: 6] Eager to leverage academic knowledge and internship insights to contribute effectively to a dynamic engineering team. [cite: 7]</p>
-    </div>
-
-    <div class="section">
-      <h2>Experience [cite: 8]</h2>
-      
-      <div class="item">
-        <div class="item-header">
-          <h3>Site Supervisor Intern [cite: 9]</h3>
-          <span class="item-date">Jan 2025 - Feb 2025 [cite: 11]</span>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0">
+                    <a href="#" class="font-bold text-xl text-navy tracking-tight">FAKHRI<span class="text-accent">MRF</span></a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-accent transition font-medium">About</a>
+                    <a href="#skills" class="text-gray-600 hover:text-accent transition font-medium">Skills</a>
+                    <a href="#projects" class="text-gray-600 hover:text-accent transition font-medium">Projects & Experience</a>
+                    <a href="#contact" class="text-gray-600 hover:text-accent transition font-medium">Contact</a>
+                </div>
+            </div>
         </div>
-        <div class="item-company">PT. ARSS Baru KSO PT. Intimulya Multi Kencana | Terban, Yogyakarta [cite: 10]</div>
-        <ul>
-          <li>Assisted the site management team in overseeing daily construction activities for Proyek Revitalisasi Pasar Terban. [cite: 12]</li>
-          <li>Responsible for monitoring project timelines, ensuring work quality aligns with technical specifications, and documenting field progress to ensure the project remains on schedule and within safety standards. [cite: 13]</li>
-        </ul>
-      </div>
+    </nav>
 
-      <div class="item">
-        <div class="item-header">
-          <h3>Site Engineer Intern [cite: 14]</h3>
-          <span class="item-date">Jan 2024 - Feb 2024 [cite: 16]</span>
+    <!-- Hero Section -->
+    <section id="hero" class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-navy text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center gap-12">
+            <div class="flex-1 text-center lg:text-left">
+                <p class="text-accent font-semibold tracking-wide uppercase mb-2">Welcome to my portfolio</p>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                    Hi, I'm <span class="text-white">Nurul Fakhri Ma'arif</span>
+                </h1>
+                <h2 class="text-xl sm:text-2xl text-gray-300 font-light mb-8">
+                    Civil & Structural Engineer | Data Automation Enthusiast
+                </h2>
+                <div class="flex justify-center lg:justify-start gap-4">
+                    <a href="#projects" class="bg-accent hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition shadow-lg">View Projects</a>
+                    <a href="#contact" class="bg-transparent border border-gray-400 hover:border-white text-white px-6 py-3 rounded-lg font-medium transition">Let's Connect</a>
+                </div>
+            </div>
+            <!-- Ganti URL src di bawah ini dengan link foto profil GitHub kamu -->
+            <div class="flex-1 flex justify-center">
+                <img src="https://avatars.githubusercontent.com/u/fakhrimrf" alt="Nurul Fakhri Ma'arif" class="w-64 h-64 lg:w-80 lg:h-80 object-cover rounded-full border-4 border-steel shadow-2xl" onerror="this.src='https://via.placeholder.com/400x400?text=Fakhri'">
+            </div>
         </div>
-        <div class="item-company">PT. Bhineka Cipta Karya | JABABEKA, Cikarang [cite: 15]</div>
-        <ul>
-          <li>Monitored daily site progress and stakeholder dynamics by shadowing owner and contractor teams during field operations and coordination meetings. [cite: 17]</li>
-          <li>Observed quality control procedures, including soil testing, and visited steel fabrication plants and other active projects. [cite: 18]</li>
-          <li>Enhanced technical skills through practical training in Tekla Structures. [cite: 19]</li>
-        </ul>
-      </div>
+    </section>
 
-      <div class="item">
-        <div class="item-header">
-          <h3>Head of Technical Division [cite: 21]</h3>
-          <span class="item-date">Dec 2023 - Jul 2024 [cite: 22]</span>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-navy mb-4">Tentang Saya</h2>
+            <div class="w-16 h-1 bg-accent mx-auto mb-8"></div>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                Saya adalah lulusan Teknik Sipil Universitas Gadjah Mada (UGM) dengan konsentrasi Struktur. 
+                Saya memiliki pengalaman dalam pengawasan lapangan, pembacaan gambar kerja (*engineering drawings*), 
+                dan pemodelan CAD/BIM. Selain keilmuan ketekniksipilan, saya memiliki minat dan keahlian khusus 
+                dalam integrasi otomatisasi data menggunakan Python dan VBA untuk *project control* dan *risk analysis*.
+            </p>
         </div>
-        <div class="item-company">PKTSL FT UGM | BSO in Civil and Environmental Department [cite: 20]</div>
-        <ul>
-          <li>Led the team in providing extracurricular civil engineering software training across all sub-disciplines. [cite: 23]</li>
-          <li>Drove cross-divisional collaboration to execute departmental events and organized internal upskilling to build a communicative, highly collaborative team. [cite: 24]</li>
-        </ul>
-      </div>
-      
-      <div class="item">
-        <div class="item-header">
-          <h3>Staff of Technical Division [cite: 25]</h3>
-          <span class="item-date">Apr 2022 - Dec 2023 [cite: 26]</span>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-navy text-center mb-4">Core Competencies</h2>
+            <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Skill 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <i class="fa-solid fa-building text-3xl text-accent mb-4"></i>
+                    <h3 class="text-xl font-bold text-navy mb-4">Structural & Field</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Structural Modeling (3D)</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Engineering Drawing Review</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Quality Control & Inspection</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Design Review & Assessment</li>
+                    </ul>
+                </div>
+                <!-- Skill 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <i class="fa-solid fa-chart-line text-3xl text-accent mb-4"></i>
+                    <h3 class="text-xl font-bold text-navy mb-4">Project Management</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> S-Curve Variance Analysis</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Early Warning Systems</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Work Breakdown Structure</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Progress Tracking</li>
+                    </ul>
+                </div>
+                <!-- Skill 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <i class="fa-solid fa-code text-3xl text-accent mb-4"></i>
+                    <h3 class="text-xl font-bold text-navy mb-4">Software & Automation</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> SAP2000, Tekla, AutoCAD</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Python (Pandas, SQLite)</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Microsoft Excel VBA</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Machine Learning basics</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="item-company">PKTSL FT UGM | BSO in Civil and Environmental Department [cite: 20]</div>
-        <ul>
-          <li>Collaborated with peers to deliver practical software training accommodating students' technical needs. [cite: 27]</li>
-          <li>Actively communicated across divisions to support joint events and participated in peer-to-peer training to enhance collective team capabilities. [cite: 28]</li>
-        </ul>
-      </div>
+    </section>
 
-      <div class="item">
-        <div class="item-header">
-          <h3>Staff of Public Relation Division [cite: 29]</h3>
-          <span class="item-date">Dec 2021 - Nov 2022 [cite: 30]</span>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-navy text-center mb-4">Projects & Experience</h2>
+            <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+
+            <div class="space-y-12">
+                <!-- Project 1 -->
+                <div class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <div class="flex-1">
+                        <span class="text-sm font-semibold text-accent uppercase tracking-wider">Tugas Akhir / Skripsi</span>
+                        <h3 class="text-2xl font-bold text-navy mt-2 mb-3">Sistem Deteksi Risiko Keterlambatan Proyek (Python & VBA)</h3>
+                        <p class="text-gray-600 mb-4">Mengembangkan *early warning system* berbasis integrasi data untuk mengevaluasi potensi keterlambatan jadwal konstruksi. Menganalisis variansi Kurva S dan memetakan dependensi WBS secara otomatis.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Data Automation</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Risk Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <div class="flex-1">
+                        <span class="text-sm font-semibold text-accent uppercase tracking-wider">Internship • Jan - Feb 2024</span>
+                        <h3 class="text-2xl font-bold text-navy mt-2 mb-3">Site Engineer - Warehouse JABABEKA</h3>
+                        <p class="text-gray-600 mb-4">Membantu tim manajemen teknik dalam pemodelan struktur dan penilaian teknis lapangan. Mengaplikasikan Tekla Structures untuk membuat model struktur 3D dan meninjau gambar teknik guna memastikan kesesuaian antara rencana desain dengan kondisi aktual.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="bg-gray-200 text-gray-800 text-xs px-3 py-1 rounded-full">Tekla Structures</span>
+                            <span class="bg-gray-200 text-gray-800 text-xs px-3 py-1 rounded-full">BIM</span>
+                            <span class="bg-gray-200 text-gray-800 text-xs px-3 py-1 rounded-full">Technical Assessment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <div class="flex-1">
+                        <span class="text-sm font-semibold text-accent uppercase tracking-wider">Internship</span>
+                        <h3 class="text-2xl font-bold text-navy mt-2 mb-3">Site Supervisor - Revitalisasi Pasar Terban</h3>
+                        <p class="text-gray-600 mb-4">Melakukan pengawasan dan pengendalian progres fisik harian. Membaca *engineering drawings* dan memastikan eksekusi presisi di lapangan, dari perakitan pembesian hingga pengecoran struktur beton, serta mendukung pencapaian *Zero Accident*.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="bg-gray-200 text-gray-800 text-xs px-3 py-1 rounded-full">Site Supervision</span>
+                            <span class="bg-gray-200 text-gray-800 text-xs px-3 py-1 rounded-full">Quality Control</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="item-company">Future Civil Engineering Challenge (FCEC) Civil In Action (CIA UGM) | National Event [cite: 29]</div>
-        <ul>
-          <li>Acted as the primary liaison between the organizing committee and educational institutions. [cite: 31]</li>
-          <li>Successfully executed nationwide outreach to invite high schools across Indonesia to participate in the FCEC paper competition, ensuring clear communication and smooth coordination with prospective participants. [cite: 32]</li>
-        </ul>
-      </div>
+    </section>
 
-    </div>
-
-    <div class="section">
-      <h2>Education [cite: 33]</h2>
-      <div class="item">
-        <div class="item-header">
-          <h3>Universitas Gadjah Mada - Bachelor's Degree [cite: 34]</h3>
-          <span class="item-date">Aug 2021 - Aug 2026 [cite: 40]</span>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-navy text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+            <div class="w-16 h-1 bg-accent mx-auto mb-10"></div>
+            <p class="text-gray-300 mb-10">Tertarik untuk mendiskusikan peluang kerja atau kolaborasi? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="mailto:fakhri31102@gmail.com" class="flex items-center justify-center gap-3 bg-steel hover:bg-accent px-6 py-4 rounded-lg transition">
+                    <i class="fa-solid fa-envelope text-xl"></i>
+                    <span class="font-medium">fakhri31102@gmail.com</span>
+                </a>
+                <a href="https://wa.me/6281299645659" target="_blank" class="flex items-center justify-center gap-3 bg-steel hover:bg-accent px-6 py-4 rounded-lg transition">
+                    <i class="fa-solid fa-phone text-xl"></i>
+                    <span class="font-medium">0812-9964-5659</span>
+                </a>
+                <a href="https://www.linkedin.com/in/fakhrimrf/" target="_blank" class="flex items-center justify-center gap-3 bg-steel hover:bg-accent px-6 py-4 rounded-lg transition">
+                    <i class="fa-brands fa-linkedin text-xl"></i>
+                    <span class="font-medium">LinkedIn Profile</span>
+                </a>
+            </div>
         </div>
-        <div class="item-company">Civil Engineer [cite: 34] | GPA 2.87/4.00 [cite: 35]</div>
-        <p>Completed a thesis titled "PENGEMBANGAN SISTEM MONITORING DAN DETEKSI RISIKO KETERLAMBATAN PROYEK KONSTRUKSI BERBASIS INTEGRASI EXCEL VBA DAN MACHINE LEARNING", focusing on scheduling and machine learning implementation. [cite: 36] The research involved developing an early warning system to track work schedule and utilizing S-curve analysis to evaluate and compare planned versus actual project progress. [cite: 37]</p>
-      </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>Skills & Languages [cite: 38, 49]</h2>
-      
-      <div class="item">
-        <h3>Technical Skills [cite: 39]</h3>
-        <ul>
-          <li><strong>Civil Engineering Software:</strong> Highly proficient in structural modeling, drafting, and visualization using AutoCAD, SAP2000, Revit, SketchUp, Enscape, and Tekla Structures. [cite: 41] Familiar with various foundational civil engineering applications. [cite: 42]</li>
-          <li><strong>Data Analysis & Automation:</strong> Skilled in utilizing Python and Advanced Excel for project management automation, including work dependency tracking (WBS) and S-Curve progress analysis. [cite: 43]</li>
-        </ul>
-      </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 text-center text-sm">
+        <p>&copy; 2026 Nurul Fakhri Ma'arif. All rights reserved.</p>
+    </footer>
 
-      <div class="item">
-        <h3>Professional Skills [cite: 44]</h3>
-        <ul>
-          <li><strong>Cross-Functional Communication:</strong> Adept at articulating ideas and coordinating seamlessly across different divisions, effectively bridging the gap between technical and non-technical stakeholders (e.g., bridging contractors, project owners, and educational institutions). [cite: 46]</li>
-          <li><strong>Collaborative Teamwork & Leadership:</strong> Proven track record of fostering supportive, growth-oriented team environments through peer-to-peer training, active listening, and conflict resolution during high-stakes project execution. [cite: 47]</li>
-          <li><strong>Adaptability & Problem Solving:</strong> Highly responsive to dynamic field conditions and organizational challenges, consistently prioritizing smooth project delivery and safe operational standards. [cite: 48]</li>
-        </ul>
-      </div>
-      
-      <div class="item">
-        <h3>Languages [cite: 49]</h3>
-        <ul>
-          <li><strong>Indonesia:</strong> Native [cite: 50]</li>
-          <li><strong>English:</strong> Basic [cite: 51, 52]</li>
-        </ul>
-      </div>
-
-    </div>
-
-  </div>
 </body>
 </html>
