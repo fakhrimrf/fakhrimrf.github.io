@@ -35,11 +35,19 @@
                 <div class="flex-shrink-0">
                     <a href="#" class="font-bold text-xl text-navy tracking-tight">FAKHRI<span class="text-accent">MRF</span></a>
                 </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-navy focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                <!-- Desktop menu -->
                 <div class="hidden md:flex space-x-8">
                     <a href="#about" class="text-gray-600 hover:text-accent transition font-medium">About</a>
                     <a href="#skills" class="text-gray-600 hover:text-accent transition font-medium">Skills</a>
                     <a href="#experience" class="text-gray-600 hover:text-accent transition font-medium">Experience</a>
                     <a href="#projects" class="text-gray-600 hover:text-accent transition font-medium">Projects</a>
+                    <a href="#education" class="text-gray-600 hover:text-accent transition font-medium">Education</a>
                     <a href="#contact" class="text-gray-600 hover:text-accent transition font-medium">Contact</a>
                 </div>
             </div>
@@ -62,7 +70,7 @@
                     <a href="#contact" class="bg-transparent border border-gray-400 hover:border-white text-white px-6 py-3 rounded-lg font-medium transition">Let's Connect</a>
                 </div>
             </div>
-            <!-- Gambar memanggil file lokal di repositori bernama "profile.jpg" -->
+            <!-- Profile Image -->
             <div class="flex-1 flex justify-center">
                 <img src="profile.jpg" alt="Nurul Fakhri Ma'arif" class="w-64 h-64 lg:w-80 lg:h-80 object-cover rounded-full border-4 border-steel shadow-2xl bg-gray-800" onerror="this.src='https://via.placeholder.com/400x400?text=Fakhri'">
             </div>
@@ -72,13 +80,13 @@
     <!-- About Section -->
     <section id="about" class="py-20 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-navy mb-4">Tentang Saya</h2>
+            <h2 class="text-3xl font-bold text-navy mb-4">About Me</h2>
             <div class="w-16 h-1 bg-accent mx-auto mb-8"></div>
-            <p class="text-lg text-gray-600 leading-relaxed">
-                Saya adalah lulusan Teknik Sipil Universitas Gadjah Mada (UGM) dengan konsentrasi Struktur. 
-                Saya memiliki pengalaman dalam pengawasan lapangan, pembacaan gambar kerja (<i>engineering drawings</i>), 
-                dan pemodelan CAD/BIM. Selain keilmuan ketekniksipilan, saya memiliki minat dan keahlian khusus 
-                dalam integrasi otomatisasi data menggunakan Python dan VBA untuk <i>project control</i> dan <i>risk analysis</i>.
+            <p class="text-lg text-gray-600 leading-relaxed text-justify md:text-center">
+                I am a Civil Engineering graduate from Universitas Gadjah Mada (UGM) with a concentration in Structural Engineering. 
+                I have hands-on experience in field supervision, interpreting engineering drawings, and CAD/BIM modeling. 
+                Beyond core civil engineering, I have a strong interest and specific expertise in data automation integration 
+                using Python and VBA for project control and risk analysis.
             </p>
         </div>
     </section>
@@ -94,30 +102,30 @@
                     <i class="fa-solid fa-building text-3xl text-accent mb-4"></i>
                     <h3 class="text-xl font-bold text-navy mb-4">Structural & Field</h3>
                     <ul class="space-y-2 text-gray-600">
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Structural Modeling (3D)</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Engineering Drawing Review</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Quality Control & Inspection</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Design Review & Assessment</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Structural Modeling (3D)</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Engineering Drawing Review</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Quality Control & Inspection</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Design Review & Assessment</li>
                     </ul>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <i class="fa-solid fa-chart-line text-3xl text-accent mb-4"></i>
                     <h3 class="text-xl font-bold text-navy mb-4">Project Management</h3>
                     <ul class="space-y-2 text-gray-600">
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> S-Curve Variance Analysis</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Early Warning Systems</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Work Breakdown Structure</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Progress Tracking</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> S-Curve Variance Analysis</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Early Warning Systems</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Work Breakdown Structure</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Progress Tracking</li>
                     </ul>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <i class="fa-solid fa-code text-3xl text-accent mb-4"></i>
                     <h3 class="text-xl font-bold text-navy mb-4">Software & Automation</h3>
                     <ul class="space-y-2 text-gray-600">
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> SAP2000, Tekla, AutoCAD</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Python (Pandas, SQLite)</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Microsoft Excel VBA</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Machine Learning basics</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> SAP2000, Tekla, AutoCAD</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Python (Pandas, SQLite)</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Microsoft Excel VBA</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Machine Learning basics</li>
                     </ul>
                 </div>
             </div>
@@ -132,17 +140,19 @@
 
             <div class="space-y-8">
                 <!-- Internship 1 -->
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm border-l-4 border-l-accent">
-                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm border-l-4 border-l-accent hover:shadow-md transition">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
                         <div>
                             <h3 class="text-2xl font-bold text-navy">Site Engineer Intern</h3>
-                            <h4 class="text-lg text-gray-600 font-medium">Proyek Pembangunan Warehouse, JABABEKA Cikarang</h4>
+                            <h4 class="text-lg text-accent font-medium mt-1">Warehouse Construction Project | JABABEKA Cikarang</h4>
                         </div>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-4 py-1 rounded-full font-semibold mt-2 md:mt-0">Feb 2024</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Feb 2024</span>
                     </div>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        Membantu tim manajemen teknik dalam pemodelan struktur dan penilaian teknis lapangan. Mengaplikasikan Tekla Structures untuk membuat model struktur 3D dan meninjau gambar teknik guna memastikan kesesuaian antara rencana desain dengan kondisi aktual.
-                    </p>
+                    <ul class="list-disc pl-5 text-gray-600 mb-6 space-y-2 leading-relaxed marker:text-accent">
+                        <li>Assisted the engineering management team in structural modeling and field technical assessments.</li>
+                        <li>Applied Tekla Structures to create precise 3D structural models.</li>
+                        <li>Reviewed engineering drawings to ensure consistency and accuracy between design plans and actual field conditions.</li>
+                    </ul>
                     <div class="flex gap-2 flex-wrap">
                         <span class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1 rounded">Field Supervision</span>
                         <span class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1 rounded">BIM (Tekla)</span>
@@ -151,16 +161,19 @@
                 </div>
 
                 <!-- Internship 2 -->
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm border-l-4 border-l-accent">
-                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm border-l-4 border-l-accent hover:shadow-md transition">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
                         <div>
                             <h3 class="text-2xl font-bold text-navy">Site Supervisor Intern</h3>
-                            <h4 class="text-lg text-gray-600 font-medium">Proyek Revitalisasi Pasar Terban, Yogyakarta</h4>
+                            <h4 class="text-lg text-accent font-medium mt-1">Pasar Terban Revitalization Project | Yogyakarta</h4>
                         </div>
                     </div>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        Melakukan pengawasan dan pengendalian progres fisik harian. Membaca <i>engineering drawings</i> dan memastikan eksekusi presisi di lapangan, dari perakitan pembesian hingga pengecoran struktur beton, serta memastikan pekerjaan berjalan aman (<i>Zero Accident</i>).
-                    </p>
+                    <ul class="list-disc pl-5 text-gray-600 mb-6 space-y-2 leading-relaxed marker:text-accent">
+                        <li>Supervised and controlled daily physical construction progress to meet project timelines.</li>
+                        <li>Interpreted engineering drawings to guarantee precise execution on the field.</li>
+                        <li>Monitored steel reinforcement assembly and concrete casting processes.</li>
+                        <li>Ensured all on-site work adhered to strict safety standards, successfully supporting a Zero Accident environment.</li>
+                    </ul>
                     <div class="flex gap-2 flex-wrap">
                         <span class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1 rounded">Progress Control</span>
                         <span class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1 rounded">Technical Inspection</span>
@@ -179,12 +192,14 @@
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Project 1: Skripsi -->
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full">
-                    <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Tugas Akhir (Skripsi)</span>
-                    <h3 class="text-xl font-bold text-navy mb-3">Sistem Deteksi Risiko Keterlambatan Proyek</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">
-                        Mengembangkan <i>early warning system</i> berbasis integrasi data untuk mengevaluasi potensi keterlambatan jadwal konstruksi. Menganalisis variansi Kurva S dan memetakan dependensi <i>Work Breakdown Structure</i> (WBS) secara otomatis menggunakan Python (pandas, sqlite3) dan Excel VBA.
-                    </p>
+                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-md transition">
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Final Thesis (Skripsi)</span>
+                    <h3 class="text-xl font-bold text-navy mb-4">Project Delay Risk Detection System</h3>
+                    <ul class="list-disc pl-4 text-gray-600 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
+                        <li>Developed an early warning system based on data integration to evaluate potential construction schedule delays.</li>
+                        <li>Analyzed S-Curve variances comparing planned outcomes against actual field execution.</li>
+                        <li>Automated the mapping of Work Breakdown Structure (WBS) dependencies utilizing Python (pandas, sqlite3) and Excel VBA.</li>
+                    </ul>
                     <div class="flex gap-2 flex-wrap mt-auto">
                         <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Python</span>
                         <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Excel VBA</span>
@@ -193,12 +208,14 @@
                 </div>
 
                 <!-- Project 2: Capstone -->
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full">
-                    <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Tugas Kuliah (Capstone)</span>
-                    <h3 class="text-xl font-bold text-navy mb-3">Perancangan Bangunan Sabo Dam</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">
-                        Merancang dimensi geometrik dan tata letak struktur fisik Sabo Dam pada Kali Gendol. Melakukan perhitungan analisis struktur secara komprehensif dan mengeksekusi render 3D dari elevasi kontur tanah hingga struktur akhir.
-                    </p>
+                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-md transition">
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Capstone Project</span>
+                    <h3 class="text-xl font-bold text-navy mb-4">Sabo Dam Building Design</h3>
+                    <ul class="list-disc pl-4 text-gray-600 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
+                        <li>Designed the geometric dimensions and physical structural layout for a Sabo Dam located on the Gendol River.</li>
+                        <li>Conducted comprehensive and detailed structural analysis calculations.</li>
+                        <li>Executed 3D rendering modeling, detailing everything from ground contour elevations to the final completed structure.</li>
+                    </ul>
                     <div class="flex gap-2 flex-wrap mt-auto">
                         <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Structural Analysis</span>
                         <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Building Design</span>
@@ -207,12 +224,14 @@
                 </div>
 
                 <!-- Project 3: Organization -->
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full md:col-span-2">
-                    <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Organisasi (Dec 2023 - Aug 2024)</span>
-                    <h3 class="text-xl font-bold text-navy mb-3">Ketua Divisi Teknis - Pelayanan Komputer TSL</h3>
-                    <p class="text-gray-600 mb-4">
-                        Memimpin tim beranggotakan 24 mahasiswa dalam merencanakan dan mengeksekusi program kerja departemen terkait pemenuhan kebutuhan aplikasi ketekniksipilan. Bertindak sebagai penanggung jawab utama <i>troubleshooting</i> operasional dan memastikan target penyelesaian proyek organisasi tercapai tepat waktu.
-                    </p>
+                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full md:col-span-2 hover:shadow-md transition">
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Organization (Dec 2023 - Aug 2024)</span>
+                    <h3 class="text-xl font-bold text-navy mb-4">Head of Technical Division - TSL Computer Services</h3>
+                    <ul class="list-disc pl-4 text-gray-600 mb-6 space-y-2 text-sm md:text-base marker:text-accent">
+                        <li>Led a team of 24 students in planning and executing departmental programs to fulfill civil engineering software requirements.</li>
+                        <li>Acted as the primary person-in-charge for operational troubleshooting and technical support.</li>
+                        <li>Ensured all organizational project targets and milestones were achieved efficiently and on schedule.</li>
+                    </ul>
                     <div class="flex gap-2 flex-wrap">
                         <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Leadership</span>
                         <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Project Planning</span>
@@ -223,12 +242,32 @@
         </div>
     </section>
 
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-navy text-center mb-4">Education</h2>
+            <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+            
+            <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm border-l-4 border-l-navy flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-md transition">
+                <div>
+                    <h3 class="text-2xl font-bold text-navy mb-1">Universitas Gadjah Mada (UGM)</h3>
+                    <p class="text-lg text-gray-700 font-medium mb-1">Bachelor of Engineering in Civil Engineering</p>
+                    <p class="text-gray-500">Faculty of Engineering • Concentration in Structural Engineering</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-left md:text-right">
+                    <span class="block text-accent font-bold text-lg">GPA: 2.87 / 4.00</span>
+                    <span class="block text-gray-500 text-sm mt-1">Yogyakarta, Indonesia</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-navy text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
             <div class="w-16 h-1 bg-accent mx-auto mb-10"></div>
-            <p class="text-gray-300 mb-10">Tertarik untuk mendiskusikan peluang kerja atau kolaborasi? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini.</p>
+            <p class="text-gray-300 mb-10">Interested in discussing job opportunities or collaborations? Feel free to reach out through the contacts below.</p>
             
             <div class="flex flex-col md:flex-row justify-center gap-6">
                 <a href="mailto:fakhri31102@gmail.com" class="flex items-center justify-center gap-3 bg-steel hover:bg-accent px-6 py-4 rounded-lg transition">
