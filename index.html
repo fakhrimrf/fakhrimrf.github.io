@@ -19,7 +19,9 @@
                     colors: {
                         navy: '#0f172a',
                         steel: '#334155',
-                        accent: '#2563eb'
+                        accent: '#3b82f6', /* Diterangkan sedikit untuk dark mode */
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b'
                     }
                 }
             }
@@ -37,108 +39,113 @@
             from { opacity: 0.4; }
             to { opacity: 1; }
         }
+        
+        /* Kustomisasi scrollbar untuk dark mode */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased relative">
+<body class="bg-slate-900 text-gray-300 font-sans antialiased relative">
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+    <nav class="fixed w-full bg-slate-900/95 backdrop-blur-sm shadow-md z-50 border-b border-slate-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0">
-                    <a href="#" class="font-bold text-xl text-navy tracking-tight">FAKHRI<span class="text-accent">MRF</span></a>
+                    <a href="#" class="font-bold text-xl text-white tracking-tight">FAKHRI<span class="text-accent">MRF</span></a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button class="text-gray-600 hover:text-navy focus:outline-none">
+                    <button class="text-gray-400 hover:text-white focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-gray-600 hover:text-accent transition font-medium">About</a>
-                    <a href="#skills" class="text-gray-600 hover:text-accent transition font-medium">Skills</a>
-                    <a href="#experience" class="text-gray-600 hover:text-accent transition font-medium">Experience</a>
-                    <a href="#projects" class="text-gray-600 hover:text-accent transition font-medium">Projects</a>
-                    <a href="#education" class="text-gray-600 hover:text-accent transition font-medium">Education</a>
-                    <a href="#contact" class="text-gray-600 hover:text-accent transition font-medium">Contact</a>
+                    <a href="#about" class="text-gray-400 hover:text-accent transition font-medium">About</a>
+                    <a href="#skills" class="text-gray-400 hover:text-accent transition font-medium">Skills</a>
+                    <a href="#experience" class="text-gray-400 hover:text-accent transition font-medium">Experience</a>
+                    <a href="#projects" class="text-gray-400 hover:text-accent transition font-medium">Projects</a>
+                    <a href="#education" class="text-gray-400 hover:text-accent transition font-medium">Education</a>
+                    <a href="#contact" class="text-gray-400 hover:text-accent transition font-medium">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-navy text-white overflow-hidden">
+    <section id="hero" class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-slate-950 text-white overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-8">
             <div class="flex-1 text-center lg:text-left max-w-2xl">
                 <p class="text-accent font-semibold tracking-wide uppercase mb-3 text-sm lg:text-base">Welcome to my portfolio</p>
-                <h1 class="text-5xl sm:text-6xl lg:text-[5rem] font-bold leading-[1.1] mb-4 tracking-tight">
+                <h1 class="text-5xl sm:text-6xl lg:text-[5rem] font-bold leading-[1.1] mb-4 tracking-tight text-white">
                     Hi, I'm Nurul<br>Fakhri Ma'arif
                 </h1>
-                <h2 class="text-xl sm:text-2xl text-gray-300 font-light mb-10">
+                <h2 class="text-xl sm:text-2xl text-gray-400 font-light mb-10">
                     Civil Engineering Graduate
                 </h2>
                 <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <a href="#experience" class="bg-accent hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition shadow-lg">View Experience</a>
-                    <!-- Tombol Download CV -->
-                    <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-white text-navy hover:bg-gray-200 px-6 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
+                    <a href="#experience" class="bg-accent hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition shadow-lg shadow-accent/20">View Experience</a>
+                    <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-slate-800 text-white hover:bg-slate-700 border border-slate-700 px-6 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
                         <i class="fa-solid fa-download"></i> Download CV
                     </a>
-                    <a href="#contact" class="bg-transparent border border-gray-400 hover:border-white text-white px-6 py-3 rounded-lg font-medium transition">Let's Connect</a>
+                    <a href="#contact" class="bg-transparent border border-gray-500 hover:border-gray-300 text-white px-6 py-3 rounded-lg font-medium transition">Let's Connect</a>
                 </div>
             </div>
             <div class="flex-1 flex justify-center lg:justify-end">
                 <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px]">
-                    <img src="profile.jpg" alt="Nurul Fakhri Ma'arif" class="w-full h-full object-cover rounded-full border-4 border-steel shadow-2xl bg-gray-800" onerror="this.src='https://via.placeholder.com/420x420?text=Fakhri'">
+                    <img src="profile.jpg" alt="Nurul Fakhri Ma'arif" class="w-full h-full object-cover rounded-full border-4 border-slate-700 shadow-2xl bg-slate-800" onerror="this.src='https://via.placeholder.com/420x420?text=Fakhri'">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-slate-900">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-navy mb-4">About Me</h2>
+            <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
             <div class="w-16 h-1 bg-accent mx-auto mb-8"></div>
-            <p class="text-lg text-gray-600 leading-relaxed text-justify md:text-center">
+            <p class="text-lg text-gray-400 leading-relaxed text-justify md:text-center">
                 Civil Engineering fresh graduate from Universitas Gadjah Mada with a strong focus on construction supervision, quality control, and field operations. Possesses a solid analytical foundation combined with practical exposure to verifying field execution against shop drawings and ensuring strict adherence to technical specifications. Gained valuable hands-on experience as an intern overseeing daily construction activities and managing progress documentation. Eager to leverage strong adaptability, problem-solving abilities, and project tracking skills to ensure smooth, timely, and safe project delivery.
             </p>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50">
+    <section id="skills" class="py-20 bg-slate-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-navy text-center mb-4">Core Competencies</h2>
+            <h2 class="text-3xl font-bold text-white text-center mb-4">Core Competencies</h2>
             <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
                     <i class="fa-solid fa-building text-3xl text-accent mb-4"></i>
-                    <h3 class="text-xl font-bold text-navy mb-4">Structural & Field</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Structural Modeling (3D)</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Engineering Drawing Review</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Quality Control & Inspection</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Design Review & Assessment</li>
+                    <h3 class="text-xl font-bold text-white mb-4">Structural & Field</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Structural Modeling (3D)</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Engineering Drawing Review</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Quality Control & Inspection</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Design Review & Assessment</li>
                     </ul>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
                     <i class="fa-solid fa-chart-line text-3xl text-accent mb-4"></i>
-                    <h3 class="text-xl font-bold text-navy mb-4">Project Management</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> S-Curve Variance Analysis</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Early Warning Systems</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Work Breakdown Structure</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Progress Tracking</li>
+                    <h3 class="text-xl font-bold text-white mb-4">Project Management</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> S-Curve Variance Analysis</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Early Warning Systems</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Work Breakdown Structure</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Progress Tracking</li>
                     </ul>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
                     <i class="fa-solid fa-code text-3xl text-accent mb-4"></i>
-                    <h3 class="text-xl font-bold text-navy mb-4">Software & Tools</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> AutoCAD, SAP2000, Revit</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> SketchUp, Enscape</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Python, Excel VBA</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> Microsoft Office</li>
+                    <h3 class="text-xl font-bold text-white mb-4">Software & Tools</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> AutoCAD, SAP2000, Revit</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> SketchUp, Enscape</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Python, Excel VBA</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Microsoft Office</li>
                     </ul>
                 </div>
             </div>
@@ -146,22 +153,22 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-white">
+    <section id="experience" class="py-20 bg-slate-900">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-navy text-center mb-4">Professional Experience</h2>
+            <h2 class="text-3xl font-bold text-white text-center mb-4">Professional Experience</h2>
             <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
 
             <div class="space-y-8">
                 <!-- Internship 1: Pasar Terban -->
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm border-l-4 border-l-accent hover:shadow-md transition">
+                <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-accent hover:shadow-lg transition">
                     <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
                         <div>
-                            <h3 class="text-2xl font-bold text-navy">Site Supervisor Intern</h3>
+                            <h3 class="text-2xl font-bold text-white">Site Supervisor Intern</h3>
                             <h4 class="text-lg text-accent font-medium mt-1">PT. ARSS Baru KSO PT. Intimulya Multi Kencana | Terban, Yogyakarta</h4>
                         </div>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Jan 2025 - Feb 2025</span>
+                        <span class="inline-block bg-accent/20 text-blue-300 border border-blue-800/50 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Jan 2025 - Feb 2025</span>
                     </div>
-                    <ul class="list-disc pl-5 text-gray-600 mb-6 space-y-2 leading-relaxed marker:text-accent">
+                    <ul class="list-disc pl-5 text-gray-400 mb-6 space-y-2 leading-relaxed marker:text-accent">
                         <li>Assisted the site management team in overseeing daily construction activities for Proyek Revitalisasi Pasar Terban.</li>
                         <li>Inspected concrete reinforcement, formwork installations, and casting processes to ensure work quality aligns with structural technical specifications and shop drawings.</li>
                         <li>Monitored daily construction activities, gaining hands-on understanding of structural integrity and translating design elements into safe field execution.</li>
@@ -169,35 +176,35 @@
                     </ul>
                     <div class="flex justify-between items-end flex-wrap gap-4">
                         <div class="flex gap-2 flex-wrap">
-                            <span class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1 rounded">Progress Control</span>
-                            <span class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1 rounded">Technical Inspection</span>
-                            <span class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1 rounded">Quality Control</span>
+                            <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Progress Control</span>
+                            <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Technical Inspection</span>
+                            <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Quality Control</span>
                         </div>
-                        <button onclick="openModal('modal-terban')" class="text-accent hover:text-navy font-semibold text-sm flex items-center gap-2 transition">
+                        <button onclick="openModal('modal-terban')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
                             <i class="fa-solid fa-images"></i> View Documentation
                         </button>
                     </div>
                 </div>
 
                 <!-- Internship 2: Jababeka -->
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm border-l-4 border-l-accent hover:shadow-md transition">
+                <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-accent hover:shadow-lg transition">
                     <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
                         <div>
-                            <h3 class="text-2xl font-bold text-navy">Drafter Engineer</h3>
+                            <h3 class="text-2xl font-bold text-white">Drafter Engineer</h3>
                             <h4 class="text-lg text-accent font-medium mt-1">PT. Bhineka Cipta Karya | JABABEKA, Cikarang</h4>
                         </div>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Jan 2024 - Feb 2024</span>
+                        <span class="inline-block bg-accent/20 text-blue-300 border border-blue-800/50 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Jan 2024 - Feb 2024</span>
                     </div>
-                    <ul class="list-disc pl-5 text-gray-600 mb-6 space-y-2 leading-relaxed marker:text-accent">
+                    <ul class="list-disc pl-5 text-gray-400 mb-6 space-y-2 leading-relaxed marker:text-accent">
                         <li>Shadowed engineering teams during field operations to observe structural quality control procedures, including soil testing and foundational works.</li>
                         <li>Actively enhanced structural modeling and detailing capabilities through intensive practical training in Tekla Structures.</li>
                     </ul>
                     <div class="flex justify-between items-end flex-wrap gap-4">
                         <div class="flex gap-2 flex-wrap">
-                            <span class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1 rounded">Field Supervision</span>
-                            <span class="bg-white border border-gray-200 text-gray-600 text-xs px-3 py-1 rounded">BIM (Tekla)</span>
+                            <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Field Supervision</span>
+                            <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">BIM (Tekla)</span>
                         </div>
-                        <button onclick="openModal('modal-jababeka')" class="text-accent hover:text-navy font-semibold text-sm flex items-center gap-2 transition">
+                        <button onclick="openModal('modal-jababeka')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
                             <i class="fa-solid fa-images"></i> View Documentation
                         </button>
                     </div>
@@ -207,37 +214,37 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-50">
+    <section id="projects" class="py-20 bg-slate-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-navy text-center mb-4">Projects & Organization</h2>
+            <h2 class="text-3xl font-bold text-white text-center mb-4">Projects & Organization</h2>
             <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Project 1: Skripsi -->
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-md transition">
+                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
                     <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Final Project / Thesis</span>
-                    <h3 class="text-xl font-bold text-navy mb-4">Construction Project Monitoring and Delay Risk Detection System</h3>
-                    <ul class="list-disc pl-4 text-gray-600 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
+                    <h3 class="text-xl font-bold text-white mb-4">Construction Project Monitoring and Delay Risk Detection System</h3>
+                    <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
                         <li>Completed a thesis titled "PENGEMBANGAN SISTEM MONITORING DAN DETEKSI RISIKO KETERLAMBATAN PROYEK KONSTRUKSI BERBASIS INTEGRASI EXCEL VBA DAN MACHINE LEARNING".</li>
                         <li>Developed an early warning system to track work schedules and utilized S-curve analysis to evaluate and compare planned versus actual project progress.</li>
                         <li>Demonstrated advanced computational programming skills (Python/VBA) through machine learning implementation.</li>
                     </ul>
                     <div class="mt-auto">
                         <div class="flex gap-2 flex-wrap mb-4">
-                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Excel VBA</span>
+                            <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Excel VBA</span>
                         </div>
-                        <button onclick="openModal('modal-thesis')" class="text-accent hover:text-navy font-semibold text-sm flex items-center gap-2 transition">
+                        <button onclick="openModal('modal-thesis')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
                             <i class="fa-solid fa-file-excel"></i> View Live Excel Dashboard
                         </button>
                     </div>
                 </div>
 
                 <!-- Project 2: Capstone -->
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-md transition">
+                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
                     <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Capstone Project</span>
-                    <h3 class="text-xl font-bold text-navy mb-4">Sabo Dam Building Design</h3>
-                    <ul class="list-disc pl-4 text-gray-600 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
+                    <h3 class="text-xl font-bold text-white mb-4">Sabo Dam Building Design</h3>
+                    <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
                         <li>Collaborated within a multidisciplinary engineering team to formulate a comprehensive, ready-to-build design for a Sabo Dam located on the Gendol River.</li>
                         <li>Conducted rigorous structural calculations and stability analyses to ensure the structural integrity and safety of the dam.</li>
                         <li>Designed the geometric dimensions and physical structural layout by integrating hydrological data and topographical site conditions.</li>
@@ -245,51 +252,51 @@
                     </ul>
                     <div class="mt-auto">
                         <div class="flex gap-2 flex-wrap mb-4">
-                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Structural Analysis</span>
-                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Building Design</span>
-                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">3D Rendering</span>
+                            <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Structural Analysis</span>
+                            <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Building Design</span>
+                            <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">3D Rendering</span>
                         </div>
-                        <button onclick="openModal('modal-capstone')" class="text-accent hover:text-navy font-semibold text-sm flex items-center gap-2 transition">
-                            <i class="fa-solid fa-images"></i> View Design & Output
+                        <button onclick="openModal('modal-capstone')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
+                            <i class="fa-solid fa-play"></i> View 3D Render Video
                         </button>
                     </div>
                 </div>
 
                 <!-- Organization 1: Head of TSL -->
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-md transition">
+                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
                     <div class="flex justify-between items-start mb-2">
                         <span class="text-xs font-bold text-accent uppercase tracking-wider">Organization</span>
                         <span class="text-xs text-gray-500 font-semibold">Dec 2023 - Jul 2024</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy mb-4">Head of Technical Division - PKTSL FT UGM</h3>
-                    <ul class="list-disc pl-4 text-gray-600 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
+                    <h3 class="text-xl font-bold text-white mb-4">Head of Technical Division - PKTSL FT UGM</h3>
+                    <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
                         <li>Led a team of 24 students in planning and executing departmental programs to fulfill civil engineering software requirements.</li>
                         <li>Drove cross-divisional collaboration to execute departmental events and organized internal upskilling to build a communicative, highly collaborative team.</li>
                     </ul>
                 </div>
 
                 <!-- Organization 2: Staff of TSL -->
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full hover:shadow-md transition">
+                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
                     <div class="flex justify-between items-start mb-2">
                         <span class="text-xs font-bold text-accent uppercase tracking-wider">Organization</span>
                         <span class="text-xs text-gray-500 font-semibold">Apr 2022 - Dec 2023</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy mb-4">Staff of Technical Division - PKTSL FT UGM</h3>
-                    <ul class="list-disc pl-4 text-gray-600 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
+                    <h3 class="text-xl font-bold text-white mb-4">Staff of Technical Division - PKTSL FT UGM</h3>
+                    <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
                         <li>Collaborated with peers to deliver practical software training accommodating students' technical needs.</li>
                         <li>Actively communicated across divisions to support joint events and participated in peer-to-peer training to enhance collective team capabilities.</li>
                     </ul>
                 </div>
 
                 <!-- Organization 3: CIA Humas -->
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm flex flex-col h-full md:col-span-2 hover:shadow-md transition">
+                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full md:col-span-2 hover:shadow-lg transition">
                     <div class="flex justify-between items-start mb-2">
                         <span class="text-xs font-bold text-accent uppercase tracking-wider">National Event Organization</span>
                         <span class="text-xs text-gray-500 font-semibold">Dec 2021 - Nov 2022</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy mb-1">Staff of Public Relation Division - FCEC</h3>
-                    <h4 class="text-sm font-medium text-gray-500 mb-4">Civil In Action (CIA UGM)</h4>
-                    <ul class="list-disc pl-4 text-gray-600 mb-6 space-y-2 text-sm md:text-base marker:text-accent">
+                    <h3 class="text-xl font-bold text-white mb-1">Staff of Public Relation Division - FCEC</h3>
+                    <h4 class="text-sm font-medium text-accent mb-4">Civil In Action (CIA UGM)</h4>
+                    <ul class="list-disc pl-4 text-gray-400 mb-6 space-y-2 text-sm md:text-base marker:text-accent">
                         <li>Acted as the primary liaison between the organizing committee and educational institutions.</li>
                         <li>Successfully executed nationwide outreach to invite high schools across Indonesia to participate in the FCEC paper competition, ensuring clear communication and smooth coordination with prospective participants.</li>
                     </ul>
@@ -299,15 +306,15 @@
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="py-20 bg-white">
+    <section id="education" class="py-20 bg-slate-900">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-navy text-center mb-4">Education</h2>
+            <h2 class="text-3xl font-bold text-white text-center mb-4">Education</h2>
             <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
             
-            <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm border-l-4 border-l-navy flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-md transition mb-6">
+            <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-accent flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition mb-6">
                 <div>
-                    <h3 class="text-2xl font-bold text-navy mb-1">Universitas Gadjah Mada (UGM)</h3>
-                    <p class="text-lg text-gray-700 font-medium mb-1">Bachelor of Civil Engineering</p>
+                    <h3 class="text-2xl font-bold text-white mb-1">Universitas Gadjah Mada (UGM)</h3>
+                    <p class="text-lg text-gray-300 font-medium mb-1">Bachelor of Civil Engineering</p>
                     <p class="text-gray-500">Concentration in Structural Engineering</p>
                 </div>
                 <div class="mt-4 md:mt-0 text-left md:text-right">
@@ -316,10 +323,10 @@
                 </div>
             </div>
 
-            <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm border-l-4 border-l-gray-400 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-md transition">
+            <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-slate-500 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition">
                 <div>
-                    <h3 class="text-2xl font-bold text-navy mb-1">SMAN 78 Jakarta</h3>
-                    <p class="text-lg text-gray-700 font-medium mb-1">Senior High School</p>
+                    <h3 class="text-2xl font-bold text-white mb-1">SMAN 78 Jakarta</h3>
+                    <p class="text-lg text-gray-300 font-medium mb-1">Senior High School</p>
                     <p class="text-gray-500">Science Major (MIPA)</p>
                 </div>
                 <div class="mt-4 md:mt-0 text-left md:text-right">
@@ -330,22 +337,22 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-navy text-white">
+    <section id="contact" class="py-20 bg-slate-950 text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
             <div class="w-16 h-1 bg-accent mx-auto mb-10"></div>
-            <p class="text-gray-300 mb-10">Interested in discussing job opportunities or collaborations? Feel free to reach out through the contacts below.</p>
+            <p class="text-gray-400 mb-10">Interested in discussing job opportunities or collaborations? Feel free to reach out through the contacts below.</p>
             
             <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fakhri31102@gmail.com&su=Inquiry%20from%20Portfolio" target="_blank" class="flex items-center justify-center gap-3 bg-steel hover:bg-accent px-6 py-4 rounded-lg transition">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fakhri31102@gmail.com&su=Inquiry%20from%20Portfolio" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
                     <i class="fa-solid fa-envelope text-xl"></i>
                     <span class="font-medium">fakhri31102@gmail.com</span>
                 </a>
-                <a href="https://wa.me/6281299645659" target="_blank" class="flex items-center justify-center gap-3 bg-steel hover:bg-accent px-6 py-4 rounded-lg transition">
+                <a href="https://wa.me/6281299645659" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
                     <i class="fa-solid fa-phone text-xl"></i>
                     <span class="font-medium">+62 812-9964-5659</span>
                 </a>
-                <a href="https://www.linkedin.com/in/fakhrimrf/" target="_blank" class="flex items-center justify-center gap-3 bg-steel hover:bg-accent px-6 py-4 rounded-lg transition">
+                <a href="https://www.linkedin.com/in/fakhrimrf/" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
                     <i class="fa-brands fa-linkedin text-xl"></i>
                     <span class="font-medium">LinkedIn Profile</span>
                 </a>
@@ -353,213 +360,245 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center text-sm">
+    <footer class="bg-black text-gray-600 py-6 text-center text-sm">
         <p>&copy; 2026 Nurul Fakhri Ma'arif. All rights reserved.</p>
     </footer>
 
     <!-- ==========================================
-         MODAL / LIGHTBOX SECTIONS
+         MODAL / LIGHTBOX SECTIONS (DARK MODE)
          ========================================== -->
 
     <!-- Modal: Pasar Terban (Slideshow) -->
-    <div id="modal-terban" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col modal-fade-in relative">
-            <button onclick="closeModal('modal-terban')" class="absolute top-4 right-4 bg-gray-200 hover:bg-red-500 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10 text-gray-700">
+    <div id="modal-terban" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-slate-800 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col modal-fade-in relative border border-slate-700 overflow-hidden">
+            <button onclick="closeModal('modal-terban')" class="absolute top-4 right-4 bg-slate-700 hover:bg-red-500 text-gray-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
-            <div class="p-6 border-b border-gray-100">
-                <h3 class="text-2xl font-bold text-navy">Pasar Terban Revitalization Project</h3>
-                <p class="text-gray-600 text-sm">Site supervision & daily progress.</p>
+            <div class="p-6 border-b border-slate-700">
+                <h3 class="text-2xl font-bold text-white">Pasar Terban Revitalization Project</h3>
+                <p class="text-gray-400 text-sm">Site supervision & daily progress.</p>
             </div>
-            <!-- Area Slideshow -->
-            <div class="p-4 flex-grow relative flex items-center justify-center bg-gray-100 min-h-[50vh]">
-                <!-- Ganti src dengan foto 1 -->
-                <div class="slide-terban slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_2-1.jpeg" alt="Terban 1" class="object-contain h-full w-auto">
+            <!-- Area Slideshow (Rasio Terjaga, Tidak Terpotong) -->
+            <div class="p-4 flex-grow relative flex items-center justify-center bg-slate-900 h-[60vh]">
+                <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_2-1.jpeg" alt="Terban 1" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <!-- Ganti src dengan foto 2 -->
-                <div class="slide-terban slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_2-2.jpeg" alt="Terban 2" class="object-contain h-full w-auto">
+                <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_2-2.jpeg" alt="Terban 2" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <div class="slide-terban slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_2-3.jpeg" alt="Terban 3" class="object-contain h-full w-auto">
+                <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_2-3.jpeg" alt="Terban 3" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <div class="slide-terban slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_2-4.jpeg" alt="Terban 4" class="object-contain h-full w-auto">
+                <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_2-4.jpeg" alt="Terban 4" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <div class="slide-terban slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_2-5.jpeg" alt="Terban 5" class="object-contain h-full w-auto">
+                <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_2-5.jpeg" alt="Terban 5" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <div class="slide-terban slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_2-6.jpeg" alt="Terban 6" class="object-contain h-full w-auto">
+                <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_2-6.jpeg" alt="Terban 6" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <div class="slide-terban slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_2-7.jpeg" alt="Terban 7" class="object-contain h-full w-auto">
+                <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_2-7.jpeg" alt="Terban 7" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <div class="slide-terban slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_2-8.jpeg" alt="Terban 8" class="object-contain h-full w-auto">
+                <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_2-8.jpeg" alt="Terban 8" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>                
                 
-                <!-- Navigasi Kiri/Kanan -->
-                <button onclick="changeSlide('terban', -1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black text-white w-12 h-12 rounded-full flex items-center justify-center transition">
-                    <i class="fa-solid fa-chevron-left text-xl"></i>
+                <!-- Navigasi -->
+                <button onclick="changeSlide('terban', -1)" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-accent text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-chevron-left text-lg sm:text-xl"></i>
                 </button>
-                <button onclick="changeSlide('terban', 1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black text-white w-12 h-12 rounded-full flex items-center justify-center transition">
-                    <i class="fa-solid fa-chevron-right text-xl"></i>
+                <button onclick="changeSlide('terban', 1)" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-accent text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-chevron-right text-lg sm:text-xl"></i>
                 </button>
             </div>
         </div>
     </div>
 
     <!-- Modal: Jababeka (Slideshow) -->
-    <div id="modal-jababeka" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col modal-fade-in relative">
-            <button onclick="closeModal('modal-jababeka')" class="absolute top-4 right-4 bg-gray-200 hover:bg-red-500 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10 text-gray-700">
+    <div id="modal-jababeka" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-slate-800 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col modal-fade-in relative border border-slate-700 overflow-hidden">
+            <button onclick="closeModal('modal-jababeka')" class="absolute top-4 right-4 bg-slate-700 hover:bg-red-500 text-gray-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
-            <div class="p-6 border-b border-gray-100">
-                <h3 class="text-2xl font-bold text-navy">Warehouse Construction Jababeka</h3>
-                <p class="text-gray-600 text-sm">Structural modeling and field technical assessment.</p>
+            <div class="p-6 border-b border-slate-700">
+                <h3 class="text-2xl font-bold text-white">Warehouse Construction Jababeka</h3>
+                <p class="text-gray-400 text-sm">Structural modeling and field technical assessment.</p>
             </div>
-            <!-- Area Slideshow -->
-            <div class="p-4 flex-grow relative flex items-center justify-center bg-gray-100 min-h-[50vh]">
-                <div class="slide-jababeka slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_1-1.jpeg" alt="Jababeka 1" class="object-contain h-full w-auto">
+            <!-- Area Slideshow (Rasio Terjaga) -->
+            <div class="p-4 flex-grow relative flex items-center justify-center bg-slate-900 h-[60vh]">
+                <div class="slide-jababeka slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_1-1.jpeg" alt="Jababeka 1" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <div class="slide-jababeka slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_1-2.jpeg" alt="Jababeka 2" class="object-contain h-full w-auto">
+                <div class="slide-jababeka slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_1-2.jpeg" alt="Jababeka 2" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <div class="slide-jababeka slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_1-3.jpeg" alt="Jababeka 3" class="object-contain h-full w-auto">
+                <div class="slide-jababeka slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_1-3.jpeg" alt="Jababeka 3" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div> 
-                <div class="slide-jababeka slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_1-4.jpeg" alt="Jababeka 4" class="object-contain h-full w-auto">
+                <div class="slide-jababeka slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_1-4.jpeg" alt="Jababeka 4" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <div class="slide-jababeka slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_1-5.jpeg" alt="Jababeka 5" class="object-contain h-full w-auto">
+                <div class="slide-jababeka slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_1-5.jpeg" alt="Jababeka 5" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
-                <div class="slide-jababeka slide-fade hidden w-full h-full max-h-[60vh] flex justify-center">
-                    <img src="KP_1-6.jpeg" alt="Jababeka 6" class="object-contain h-full w-auto">
+                <div class="slide-jababeka slide-fade hidden w-full h-full flex justify-center items-center">
+                    <img src="KP_1-6.jpeg" alt="Jababeka 6" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>              
                 
-                <button onclick="changeSlide('jababeka', -1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black text-white w-12 h-12 rounded-full flex items-center justify-center transition">
-                    <i class="fa-solid fa-chevron-left text-xl"></i>
+                <button onclick="changeSlide('jababeka', -1)" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-accent text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-chevron-left text-lg sm:text-xl"></i>
                 </button>
-                <button onclick="changeSlide('jababeka', 1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black text-white w-12 h-12 rounded-full flex items-center justify-center transition">
-                    <i class="fa-solid fa-chevron-right text-xl"></i>
+                <button onclick="changeSlide('jababeka', 1)" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-accent text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-chevron-right text-lg sm:text-xl"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Modal: Capstone (4 VIDEO RENDER - GRID) -->
-    <div id="modal-capstone" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl w-full max-w-5xl max-h-[95vh] h-full flex flex-col modal-fade-in relative">
-            <button onclick="closeModal('modal-capstone')" class="absolute top-4 right-4 bg-gray-200 hover:bg-red-500 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10 text-gray-700">
+    <!-- Modal: Skripsi (Thesis) - EXCEL FULL SIZE -->
+    <div id="modal-thesis" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-slate-800 rounded-xl w-full max-w-6xl max-h-[95vh] h-full flex flex-col modal-fade-in relative border border-slate-700 overflow-hidden">
+            <button onclick="closeModal('modal-thesis')" class="absolute top-4 right-4 bg-slate-700 hover:bg-red-500 text-gray-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
-            <div class="p-6 border-b border-gray-100 flex-shrink-0">
-                <h3 class="text-2xl font-bold text-navy mb-2">Sabo Dam Building Design</h3>
-                <p class="text-gray-600 text-sm">3D rendering video presentations of the Sabo Dam structure.</p>
+            <div class="p-6 border-b border-slate-700 flex-shrink-0">
+                <h3 class="text-2xl font-bold text-white mb-1">Live Excel Dashboard Preview</h3>
+                <p class="text-gray-400 text-sm">Interactive preview of the Delay Risk Detection System.</p>
+            </div>
+            <!-- Area Iframe Diperbesar -->
+            <div class="p-0 flex-grow relative bg-slate-900 h-full w-full">
+                <!-- Width 100% dan Height 100% agar menempati ruang penuh modal -->
+                <iframe src="https://1drv.ms/x/c/2b64307f0748c130/IQRtwPrDN48mSYJ2VYPbIv2sAfeXETpM0S6JePOgN-chY-E" class="w-full h-full absolute inset-0" frameborder="0" scrolling="yes"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Capstone (VIDEO SLIDESHOW) -->
+    <div id="modal-capstone" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-slate-800 rounded-xl w-full max-w-5xl max-h-[95vh] flex flex-col modal-fade-in relative border border-slate-700 overflow-hidden">
+            <button onclick="closeModal('modal-capstone')" class="absolute top-4 right-4 bg-slate-700 hover:bg-red-500 text-gray-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="p-6 border-b border-slate-700">
+                <h3 class="text-2xl font-bold text-white mb-1">Sabo Dam Building Design</h3>
+                <p class="text-gray-400 text-sm">3D rendering video presentations.</p>
             </div>
             
-            <!-- Area Video Embed Grid (Scrollable) -->
-            <div class="p-4 sm:p-6 flex-grow relative bg-gray-900 rounded-b-xl overflow-y-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
-                    <!-- Video 1 -->
-                    <div class="w-full relative" style="padding-top: 56.25%;">
-                        <iframe src="https://drive.google.com/file/d/1t_yW3E-vji1auWl3TmhG2eewEuKTpIH4/preview" width="640" height="480"></iframe>
-                    </div>
-
-                    <!-- Video 2 -->
-                    <div class="w-full relative" style="padding-top: 56.25%;">
-                        <iframe src="https://drive.google.com/file/d/1gKs48k1cTR9Z1fHbga7tbjgs-PY-IPwO/preview" width="640" height="480"></iframe>
-                    </div>
-
-                    <!-- Video 3 -->
-                    <div class="w-full relative" style="padding-top: 56.25%;">
-                        <iframe src="https://drive.google.com/file/d/1ogiPs92A8fa3Wij2-8GGAPHrBb6VxeG-/preview" width="640" height="480"></iframe>
-                    </div>
-
-                    <!-- Video 4 -->
-                    <div class="w-full relative" style="padding-top: 56.25%;">
-                        <iframe src="https://drive.google.com/file/d/1xOkmnGrv_KZfLVWn9uZIJrUE3NLb_AEt/preview" width="640" height="480"></iframe>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal: Skripsi (Thesis) - PREVIEW EXCEL IFRAME -->
-    <div id="modal-thesis" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl w-full max-w-5xl max-h-[95vh] h-full flex flex-col modal-fade-in relative">
-            <button onclick="closeModal('modal-thesis')" class="absolute top-4 right-4 bg-gray-200 hover:bg-red-500 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10 text-gray-700">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            <div class="p-6 border-b border-gray-100">
-                <h3 class="text-2xl font-bold text-navy">Live Excel Dashboard Preview</h3>
-                <p class="text-gray-600 text-sm">Interactive preview of the Delay Risk Detection System.</p>
-            </div>
-            <!-- Area Preview Iframe Excel -->
-            <div class="p-4 flex-grow relative bg-gray-200">
-                <!-- GANTI URL SRC DI BAWAH INI DENGAN LINK EMBED ONEDRIVE KAMU -->
-                <iframe src="https://1drv.ms/x/c/2b64307f0748c130/IQRtwPrDN48mSYJ2VYPbIv2sAfeXETpM0S6JePOgN-chY-E" width="402" height="346" frameborder="0" scrolling="no"></iframe>
+            <!-- Area Video Slideshow (Rasio 16:9 responsif) -->
+            <div class="p-4 flex-grow relative flex items-center justify-center bg-black min-h-[50vh] sm:min-h-[70vh]">
                 
+                <!-- Video 1 -->
+                <div class="slide-capstone slide-fade hidden w-full max-w-4xl flex justify-center items-center">
+                    <div class="w-full relative" style="padding-top: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full rounded shadow-lg bg-slate-900" 
+                                src="https://drive.google.com/file/d/1t_yW3E-vji1auWl3TmhG2eewEuKTpIH4/preview" 
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="slide-capstone slide-fade hidden w-full max-w-4xl flex justify-center items-center">
+                    <div class="w-full relative" style="padding-top: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full rounded shadow-lg bg-slate-900" 
+                                src="https://drive.google.com/file/d/1gKs48k1cTR9Z1fHbga7tbjgs-PY-IPwO/preview" 
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="slide-capstone slide-fade hidden w-full max-w-4xl flex justify-center items-center">
+                    <div class="w-full relative" style="padding-top: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full rounded shadow-lg bg-slate-900" 
+                                src="https://drive.google.com/file/d/1ogiPs92A8fa3Wij2-8GGAPHrBb6VxeG-/preview" 
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="slide-capstone slide-fade hidden w-full max-w-4xl flex justify-center items-center">
+                    <div class="w-full relative" style="padding-top: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full rounded shadow-lg bg-slate-900" 
+                                src="https://drive.google.com/file/d/1xOkmnGrv_KZfLVWn9uZIJrUE3NLb_AEt/preview" 
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Navigasi Slider Video -->
+                <button onclick="changeSlide('capstone', -1)" class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-accent text-white w-10 h-10 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-chevron-left text-lg sm:text-2xl"></i>
+                </button>
+                <button onclick="changeSlide('capstone', 1)" class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-accent text-white w-10 h-10 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-chevron-right text-lg sm:text-2xl"></i>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Javascript untuk fungsi Buka/Tutup Modal dan Logic Slideshow -->
+    <!-- Javascript -->
     <script>
-        // State untuk melacak urutan gambar saat ini
         let slideIndex = {
             'terban': 0,
             'jababeka': 0,
             'capstone': 0
         };
 
-        // Fungsi Buka Modal & Tampilkan Slide Pertama
         function openModal(modalId) {
             document.getElementById(modalId).classList.remove('hidden');
             document.body.style.overflow = 'hidden'; 
             
-            // Jika modal memiliki slideshow, reset ke gambar pertama
             let galleryKey = modalId.replace('modal-', '');
             if (slideIndex[galleryKey] !== undefined) {
-                showSlide(galleryKey, 0);
+                showSlide(galleryKey, slideIndex[galleryKey]);
             }
         }
 
-        // Fungsi Tutup Modal
         function closeModal(modalId) {
             document.getElementById(modalId).classList.add('hidden');
             document.body.style.overflow = 'auto'; 
+            
+            // Hentikan video yang sedang berputar jika modal ditutup
+            if (modalId === 'modal-capstone') {
+                stopVideos('capstone');
+            }
         }
 
-        // Fungsi Menampilkan Slide Spesifik
         function showSlide(gallery, index) {
             let slides = document.querySelectorAll('.slide-' + gallery);
             if (slides.length === 0) return;
             
-            // Sembunyikan semua slide
+            // Logika cerdas: Hentikan video sebelumnya saat slide diganti (khusus untuk gallery video)
+            if (gallery === 'capstone') {
+                stopVideos('capstone');
+            }
+
             slides.forEach(slide => slide.classList.add('hidden'));
             
-            // Validasi indeks batas atas/bawah
             if (index >= slides.length) slideIndex[gallery] = 0;
             if (index < 0) slideIndex[gallery] = slides.length - 1;
             
-            // Tampilkan slide yang aktif
             slides[slideIndex[gallery]].classList.remove('hidden');
         }
 
-        // Fungsi Tombol Prev/Next
         function changeSlide(gallery, step) {
             slideIndex[gallery] += step;
             showSlide(gallery, slideIndex[gallery]);
         }
+        
+        // Fungsi untuk me-refresh iframe (berguna untuk stop video yang sedang jalan)
+        function stopVideos(gallery) {
+            let slides = document.querySelectorAll('.slide-' + gallery);
+            slides.forEach(slide => {
+                let iframe = slide.querySelector('iframe');
+                if(iframe) {
+                    let src = iframe.src;
+                    iframe.src = src; // trick to stop playback
+                }
+            });
+        }
 
-        // Menutup modal saat mengklik background hitam (backdrop)
+        // Tutup modal jika mengklik area gelap di luar modal
         window.onclick = function(event) {
             const modals = ['modal-terban', 'modal-jababeka', 'modal-thesis', 'modal-capstone'];
             modals.forEach(id => {
