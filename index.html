@@ -11,6 +11,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
+    <!-- Library untuk Generate PDF dinamis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -19,7 +22,7 @@
                     colors: {
                         navy: '#0f172a',
                         steel: '#334155',
-                        accent: '#3b82f6', /* Diterangkan sedikit untuk dark mode */
+                        accent: '#3b82f6',
                         darkbg: '#0f172a',
                         cardbg: '#1e293b'
                     }
@@ -50,7 +53,7 @@
 <body class="bg-slate-900 text-gray-300 font-sans antialiased relative">
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-slate-900/95 backdrop-blur-sm shadow-md z-50 border-b border-slate-800">
+    <nav id="navbar" class="fixed w-full bg-slate-900/95 backdrop-blur-sm shadow-md z-50 border-b border-slate-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0">
@@ -73,299 +76,307 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-slate-950 text-white overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-8">
-            <div class="flex-1 text-center lg:text-left max-w-2xl">
-                <p class="text-accent font-semibold tracking-wide uppercase mb-3 text-sm lg:text-base">Welcome to my portfolio</p>
-                <h1 class="text-5xl sm:text-6xl lg:text-[5rem] font-bold leading-[1.1] mb-4 tracking-tight text-white">
-                    Hi, I'm Nurul<br>Fakhri Ma'arif
-                </h1>
-                <h2 class="text-xl sm:text-2xl text-gray-400 font-light mb-10">
-                    Civil Engineering Graduate
-                </h2>
-                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <a href="#experience" class="bg-accent hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition shadow-lg shadow-accent/20">View Experience</a>
-                    <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-slate-800 text-white hover:bg-slate-700 border border-slate-700 px-6 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
-                        <i class="fa-solid fa-download"></i> Download CV
+    <!-- WRAPPER UNTUK PDF: Hanya area ini yang akan dicetak -->
+    <main id="main-content">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-slate-950 text-white overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-8">
+                <div class="flex-1 text-center lg:text-left max-w-2xl">
+                    <p class="text-accent font-semibold tracking-wide uppercase mb-3 text-sm lg:text-base">Welcome to my portfolio</p>
+                    <h1 class="text-5xl sm:text-6xl lg:text-[5rem] font-bold leading-[1.1] mb-4 tracking-tight text-white">
+                        Hi, I'm Nurul<br>Fakhri Ma'arif
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl text-gray-400 font-light mb-10">
+                        Civil Engineering Graduate
+                    </h2>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+                        <a href="#experience" class="bg-accent hover:bg-blue-600 text-white px-5 py-3 rounded-lg font-medium transition shadow-lg shadow-accent/20">View Experience</a>
+                        <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-slate-800 text-white hover:bg-slate-700 border border-slate-700 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Download CV
+                        </a>
+                        <!-- Tombol Generate PDF Dinamis Baru -->
+                        <button id="btn-generate-pdf" onclick="generatePDF()" class="bg-indigo-600 text-white hover:bg-indigo-500 border border-indigo-500 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
+                            <i class="fa-solid fa-file-pdf"></i> Generate Web PDF
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-1 flex justify-center lg:justify-end">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px]">
+                        <img src="profile.jpg" alt="Nurul Fakhri Ma'arif" class="w-full h-full object-cover rounded-full border-4 border-slate-700 shadow-2xl bg-slate-800" onerror="this.src='https://via.placeholder.com/420x420?text=Fakhri'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-slate-900">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
+                <div class="w-16 h-1 bg-accent mx-auto mb-8"></div>
+                <p class="text-lg text-gray-400 leading-relaxed text-justify md:text-center">
+                    Civil Engineering fresh graduate from Universitas Gadjah Mada with a strong focus on construction supervision, quality control, and field operations. Possesses a solid analytical foundation combined with practical exposure to verifying field execution against shop drawings and ensuring strict adherence to technical specifications. Gained valuable hands-on experience as an intern overseeing daily construction activities and managing progress documentation. Eager to leverage strong adaptability, problem-solving abilities, and project tracking skills to ensure smooth, timely, and safe project delivery.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-slate-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-white text-center mb-4">Core Competencies</h2>
+                <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
+                        <i class="fa-solid fa-building text-3xl text-accent mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-4">Structural & Field</h3>
+                        <ul class="space-y-2 text-gray-400">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Structural Modeling (3D)</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Engineering Drawing Review</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Quality Control & Inspection</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Design Review & Assessment</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
+                        <i class="fa-solid fa-chart-line text-3xl text-accent mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-4">Project Management</h3>
+                        <ul class="space-y-2 text-gray-400">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> S-Curve Variance Analysis</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Early Warning Systems</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Work Breakdown Structure</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Progress Tracking</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
+                        <i class="fa-solid fa-code text-3xl text-accent mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-4">Software & Tools</h3>
+                        <ul class="space-y-2 text-gray-400">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> AutoCAD, SAP2000, Revit</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> SketchUp, Enscape</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Python, Excel VBA</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Microsoft Office</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-slate-900">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-white text-center mb-4">Professional Experience</h2>
+                <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+
+                <div class="space-y-8">
+                    <!-- Internship 1: Pasar Terban -->
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-accent hover:shadow-lg transition">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Site Supervisor Intern</h3>
+                                <h4 class="text-lg text-accent font-medium mt-1">PT. ARSS Baru KSO PT. Intimulya Multi Kencana | Terban, Yogyakarta</h4>
+                            </div>
+                            <span class="inline-block bg-accent/20 text-blue-300 border border-blue-800/50 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Jan 2025 - Feb 2025</span>
+                        </div>
+                        <ul class="list-disc pl-5 text-gray-400 mb-6 space-y-2 leading-relaxed marker:text-accent">
+                            <li>Assisted the site management team in overseeing daily construction activities for Proyek Revitalisasi Pasar Terban.</li>
+                            <li>Inspected concrete reinforcement, formwork installations, and casting processes to ensure work quality aligns with structural technical specifications and shop drawings.</li>
+                            <li>Monitored daily construction activities, gaining hands-on understanding of structural integrity and translating design elements into safe field execution.</li>
+                            <li>Documented daily progress and generated CAD outputs as a weekly progress summary for Revit integration.</li>
+                        </ul>
+                        <div class="flex justify-between items-end flex-wrap gap-4 pdf-ignore">
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Progress Control</span>
+                                <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Technical Inspection</span>
+                                <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Quality Control</span>
+                            </div>
+                            <button onclick="openModal('modal-terban')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
+                                <i class="fa-solid fa-images"></i> View Documentation
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Internship 2: Jababeka -->
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-accent hover:shadow-lg transition">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Drafter Engineer</h3>
+                                <h4 class="text-lg text-accent font-medium mt-1">PT. Bhineka Cipta Karya | JABABEKA, Cikarang</h4>
+                            </div>
+                            <span class="inline-block bg-accent/20 text-blue-300 border border-blue-800/50 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Jan 2024 - Feb 2024</span>
+                        </div>
+                        <ul class="list-disc pl-5 text-gray-400 mb-6 space-y-2 leading-relaxed marker:text-accent">
+                            <li>Shadowed engineering teams during field operations to observe structural quality control procedures, including soil testing and foundational works.</li>
+                            <li>Actively enhanced structural modeling and detailing capabilities through intensive practical training in Tekla Structures.</li>
+                        </ul>
+                        <div class="flex justify-between items-end flex-wrap gap-4 pdf-ignore">
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Field Supervision</span>
+                                <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">BIM (Tekla)</span>
+                            </div>
+                            <button onclick="openModal('modal-jababeka')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
+                                <i class="fa-solid fa-images"></i> View Documentation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-slate-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-white text-center mb-4">Projects & Organization</h2>
+                <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Project 1: Skripsi -->
+                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
+                        <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Final Project / Thesis</span>
+                        <h3 class="text-xl font-bold text-white mb-4">Construction Project Monitoring and Delay Risk Detection System</h3>
+                        <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
+                            <li>Completed a thesis titled "PENGEMBANGAN SISTEM MONITORING DAN DETEKSI RISIKO KETERLAMBATAN PROYEK KONSTRUKSI BERBASIS INTEGRASI EXCEL VBA DAN MACHINE LEARNING".</li>
+                            <li>Developed an early warning system to track work schedules and utilized S-curve analysis to evaluate and compare planned versus actual project progress.</li>
+                            <li>Demonstrated advanced computational programming skills (Python/VBA) through machine learning implementation.</li>
+                        </ul>
+                        <div class="mt-auto pdf-ignore">
+                            <div class="flex gap-2 flex-wrap mb-4">
+                                <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Python</span>
+                                <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Excel VBA</span>
+                            </div>
+                            <button onclick="openModal('modal-thesis')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
+                                <i class="fa-solid fa-file-excel"></i> View Live Excel Dashboard
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Capstone -->
+                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
+                        <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Capstone Project</span>
+                        <h3 class="text-xl font-bold text-white mb-4">Sabo Dam Building Design</h3>
+                        <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
+                            <li>Collaborated within a multidisciplinary engineering team to formulate a comprehensive, ready-to-build design for a Sabo Dam located on the Gendol River.</li>
+                            <li>Conducted rigorous structural calculations and stability analyses to ensure the structural integrity and safety of the dam.</li>
+                            <li>Designed the geometric dimensions and physical structural layout by integrating hydrological data and topographical site conditions.</li>
+                            <li>Executed complete 3D modeling and rendering, translating raw ground contour data into a detailed visual representation of the final structure.</li>
+                        </ul>
+                        <div class="mt-auto pdf-ignore">
+                            <div class="flex gap-2 flex-wrap mb-4">
+                                <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Structural Analysis</span>
+                                <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Building Design</span>
+                                <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">3D Rendering</span>
+                            </div>
+                            <button onclick="openModal('modal-capstone')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
+                                <i class="fa-solid fa-play"></i> View 3D Render Video
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Organization 1: Head of TSL -->
+                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-accent uppercase tracking-wider">Organization</span>
+                            <span class="text-xs text-gray-500 font-semibold">Dec 2023 - Jul 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Head of Technical Division - PKTSL FT UGM</h3>
+                        <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
+                            <li>Led a team of 24 students in planning and executing departmental programs to fulfill civil engineering software requirements.</li>
+                            <li>Drove cross-divisional collaboration to execute departmental events and organized internal upskilling to build a communicative, highly collaborative team.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Organization 2: Staff of TSL -->
+                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-accent uppercase tracking-wider">Organization</span>
+                            <span class="text-xs text-gray-500 font-semibold">Apr 2022 - Dec 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Staff of Technical Division - PKTSL FT UGM</h3>
+                        <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
+                            <li>Collaborated with peers to deliver practical software training accommodating students' technical needs.</li>
+                            <li>Actively communicated across divisions to support joint events and participated in peer-to-peer training to enhance collective team capabilities.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Organization 3: CIA Humas -->
+                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full md:col-span-2 hover:shadow-lg transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-accent uppercase tracking-wider">National Event Organization</span>
+                            <span class="text-xs text-gray-500 font-semibold">Dec 2021 - Nov 2022</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-1">Staff of Public Relation Division - FCEC</h3>
+                        <h4 class="text-sm font-medium text-accent mb-4">Civil In Action (CIA UGM)</h4>
+                        <ul class="list-disc pl-4 text-gray-400 mb-6 space-y-2 text-sm md:text-base marker:text-accent">
+                            <li>Acted as the primary liaison between the organizing committee and educational institutions.</li>
+                            <li>Successfully executed nationwide outreach to invite high schools across Indonesia to participate in the FCEC paper competition, ensuring clear communication and smooth coordination with prospective participants.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-20 bg-slate-900">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-white text-center mb-4">Education</h2>
+                <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+                
+                <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-accent flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-1">Universitas Gadjah Mada (UGM)</h3>
+                        <p class="text-lg text-gray-300 font-medium mb-1">Bachelor of Civil Engineering</p>
+                        <p class="text-gray-500">Concentration in Structural Engineering</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-left md:text-right">
+                        <span class="block text-accent font-bold text-lg">GPA: 2.87 / 4.00</span>
+                        <span class="block text-gray-500 text-sm mt-1">Aug 2021 - Aug 2026</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-slate-500 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-1">SMAN 78 Jakarta</h3>
+                        <p class="text-lg text-gray-300 font-medium mb-1">Senior High School</p>
+                        <p class="text-gray-500">Science Major (MIPA)</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-left md:text-right">
+                        <span class="block text-gray-500 text-sm mt-1">Jul 2018 - Jul 2021</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-slate-950 text-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+                <div class="w-16 h-1 bg-accent mx-auto mb-10"></div>
+                <p class="text-gray-400 mb-10">Interested in discussing job opportunities or collaborations? Feel free to reach out through the contacts below.</p>
+                
+                <div class="flex flex-col md:flex-row justify-center gap-6">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fakhri31102@gmail.com&su=Inquiry%20from%20Portfolio" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
+                        <i class="fa-solid fa-envelope text-xl"></i>
+                        <span class="font-medium">fakhri31102@gmail.com</span>
                     </a>
-                    <a href="#contact" class="bg-transparent border border-gray-500 hover:border-gray-300 text-white px-6 py-3 rounded-lg font-medium transition">Let's Connect</a>
+                    <a href="https://wa.me/6281299645659" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
+                        <i class="fa-solid fa-phone text-xl"></i>
+                        <span class="font-medium">+62 812-9964-5659</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/fakhrimrf/" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
+                        <i class="fa-brands fa-linkedin text-xl"></i>
+                        <span class="font-medium">LinkedIn Profile</span>
+                    </a>
                 </div>
             </div>
-            <div class="flex-1 flex justify-center lg:justify-end">
-                <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px]">
-                    <img src="profile.jpg" alt="Nurul Fakhri Ma'arif" class="w-full h-full object-cover rounded-full border-4 border-slate-700 shadow-2xl bg-slate-800" onerror="this.src='https://via.placeholder.com/420x420?text=Fakhri'">
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-slate-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
-            <div class="w-16 h-1 bg-accent mx-auto mb-8"></div>
-            <p class="text-lg text-gray-400 leading-relaxed text-justify md:text-center">
-                Civil Engineering fresh graduate from Universitas Gadjah Mada with a strong focus on construction supervision, quality control, and field operations. Possesses a solid analytical foundation combined with practical exposure to verifying field execution against shop drawings and ensuring strict adherence to technical specifications. Gained valuable hands-on experience as an intern overseeing daily construction activities and managing progress documentation. Eager to leverage strong adaptability, problem-solving abilities, and project tracking skills to ensure smooth, timely, and safe project delivery.
-            </p>
-        </div>
-    </section>
+        <footer class="bg-black text-gray-600 py-6 text-center text-sm">
+            <p>&copy; 2026 Nurul Fakhri Ma'arif. All rights reserved.</p>
+        </footer>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white text-center mb-4">Core Competencies</h2>
-            <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
-                    <i class="fa-solid fa-building text-3xl text-accent mb-4"></i>
-                    <h3 class="text-xl font-bold text-white mb-4">Structural & Field</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Structural Modeling (3D)</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Engineering Drawing Review</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Quality Control & Inspection</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Design Review & Assessment</li>
-                    </ul>
-                </div>
-                <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
-                    <i class="fa-solid fa-chart-line text-3xl text-accent mb-4"></i>
-                    <h3 class="text-xl font-bold text-white mb-4">Project Management</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> S-Curve Variance Analysis</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Early Warning Systems</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Work Breakdown Structure</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Progress Tracking</li>
-                    </ul>
-                </div>
-                <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
-                    <i class="fa-solid fa-code text-3xl text-accent mb-4"></i>
-                    <h3 class="text-xl font-bold text-white mb-4">Software & Tools</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> AutoCAD, SAP2000, Revit</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> SketchUp, Enscape</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Python, Excel VBA</li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Microsoft Office</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-slate-900">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white text-center mb-4">Professional Experience</h2>
-            <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
-
-            <div class="space-y-8">
-                <!-- Internship 1: Pasar Terban -->
-                <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-accent hover:shadow-lg transition">
-                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold text-white">Site Supervisor Intern</h3>
-                            <h4 class="text-lg text-accent font-medium mt-1">PT. ARSS Baru KSO PT. Intimulya Multi Kencana | Terban, Yogyakarta</h4>
-                        </div>
-                        <span class="inline-block bg-accent/20 text-blue-300 border border-blue-800/50 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Jan 2025 - Feb 2025</span>
-                    </div>
-                    <ul class="list-disc pl-5 text-gray-400 mb-6 space-y-2 leading-relaxed marker:text-accent">
-                        <li>Assisted the site management team in overseeing daily construction activities for Proyek Revitalisasi Pasar Terban.</li>
-                        <li>Inspected concrete reinforcement, formwork installations, and casting processes to ensure work quality aligns with structural technical specifications and shop drawings.</li>
-                        <li>Monitored daily construction activities, gaining hands-on understanding of structural integrity and translating design elements into safe field execution.</li>
-                        <li>Documented daily progress and generated CAD outputs as a weekly progress summary for Revit integration.</li>
-                    </ul>
-                    <div class="flex justify-between items-end flex-wrap gap-4">
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Progress Control</span>
-                            <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Technical Inspection</span>
-                            <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Quality Control</span>
-                        </div>
-                        <button onclick="openModal('modal-terban')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
-                            <i class="fa-solid fa-images"></i> View Documentation
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Internship 2: Jababeka -->
-                <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-accent hover:shadow-lg transition">
-                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold text-white">Drafter Engineer</h3>
-                            <h4 class="text-lg text-accent font-medium mt-1">PT. Bhineka Cipta Karya | JABABEKA, Cikarang</h4>
-                        </div>
-                        <span class="inline-block bg-accent/20 text-blue-300 border border-blue-800/50 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Jan 2024 - Feb 2024</span>
-                    </div>
-                    <ul class="list-disc pl-5 text-gray-400 mb-6 space-y-2 leading-relaxed marker:text-accent">
-                        <li>Shadowed engineering teams during field operations to observe structural quality control procedures, including soil testing and foundational works.</li>
-                        <li>Actively enhanced structural modeling and detailing capabilities through intensive practical training in Tekla Structures.</li>
-                    </ul>
-                    <div class="flex justify-between items-end flex-wrap gap-4">
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Field Supervision</span>
-                            <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">BIM (Tekla)</span>
-                        </div>
-                        <button onclick="openModal('modal-jababeka')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
-                            <i class="fa-solid fa-images"></i> View Documentation
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white text-center mb-4">Projects & Organization</h2>
-            <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1: Skripsi -->
-                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
-                    <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Final Project / Thesis</span>
-                    <h3 class="text-xl font-bold text-white mb-4">Construction Project Monitoring and Delay Risk Detection System</h3>
-                    <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
-                        <li>Completed a thesis titled "PENGEMBANGAN SISTEM MONITORING DAN DETEKSI RISIKO KETERLAMBATAN PROYEK KONSTRUKSI BERBASIS INTEGRASI EXCEL VBA DAN MACHINE LEARNING".</li>
-                        <li>Developed an early warning system to track work schedules and utilized S-curve analysis to evaluate and compare planned versus actual project progress.</li>
-                        <li>Demonstrated advanced computational programming skills (Python/VBA) through machine learning implementation.</li>
-                    </ul>
-                    <div class="mt-auto">
-                        <div class="flex gap-2 flex-wrap mb-4">
-                            <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Excel VBA</span>
-                        </div>
-                        <button onclick="openModal('modal-thesis')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
-                            <i class="fa-solid fa-file-excel"></i> View Live Excel Dashboard
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project 2: Capstone -->
-                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
-                    <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Capstone Project</span>
-                    <h3 class="text-xl font-bold text-white mb-4">Sabo Dam Building Design</h3>
-                    <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
-                        <li>Collaborated within a multidisciplinary engineering team to formulate a comprehensive, ready-to-build design for a Sabo Dam located on the Gendol River.</li>
-                        <li>Conducted rigorous structural calculations and stability analyses to ensure the structural integrity and safety of the dam.</li>
-                        <li>Designed the geometric dimensions and physical structural layout by integrating hydrological data and topographical site conditions.</li>
-                        <li>Executed complete 3D modeling and rendering, translating raw ground contour data into a detailed visual representation of the final structure.</li>
-                    </ul>
-                    <div class="mt-auto">
-                        <div class="flex gap-2 flex-wrap mb-4">
-                            <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Structural Analysis</span>
-                            <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Building Design</span>
-                            <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">3D Rendering</span>
-                        </div>
-                        <button onclick="openModal('modal-capstone')" class="text-accent hover:text-blue-300 font-semibold text-sm flex items-center gap-2 transition">
-                            <i class="fa-solid fa-play"></i> View 3D Render Video
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Organization 1: Head of TSL -->
-                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="text-xs font-bold text-accent uppercase tracking-wider">Organization</span>
-                        <span class="text-xs text-gray-500 font-semibold">Dec 2023 - Jul 2024</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Head of Technical Division - PKTSL FT UGM</h3>
-                    <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
-                        <li>Led a team of 24 students in planning and executing departmental programs to fulfill civil engineering software requirements.</li>
-                        <li>Drove cross-divisional collaboration to execute departmental events and organized internal upskilling to build a communicative, highly collaborative team.</li>
-                    </ul>
-                </div>
-
-                <!-- Organization 2: Staff of TSL -->
-                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full hover:shadow-lg transition">
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="text-xs font-bold text-accent uppercase tracking-wider">Organization</span>
-                        <span class="text-xs text-gray-500 font-semibold">Apr 2022 - Dec 2023</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Staff of Technical Division - PKTSL FT UGM</h3>
-                    <ul class="list-disc pl-4 text-gray-400 mb-6 flex-grow space-y-2 text-sm marker:text-accent">
-                        <li>Collaborated with peers to deliver practical software training accommodating students' technical needs.</li>
-                        <li>Actively communicated across divisions to support joint events and participated in peer-to-peer training to enhance collective team capabilities.</li>
-                    </ul>
-                </div>
-
-                <!-- Organization 3: CIA Humas -->
-                <div class="bg-slate-900 p-8 rounded-xl border border-slate-700 shadow-md flex flex-col h-full md:col-span-2 hover:shadow-lg transition">
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="text-xs font-bold text-accent uppercase tracking-wider">National Event Organization</span>
-                        <span class="text-xs text-gray-500 font-semibold">Dec 2021 - Nov 2022</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-1">Staff of Public Relation Division - FCEC</h3>
-                    <h4 class="text-sm font-medium text-accent mb-4">Civil In Action (CIA UGM)</h4>
-                    <ul class="list-disc pl-4 text-gray-400 mb-6 space-y-2 text-sm md:text-base marker:text-accent">
-                        <li>Acted as the primary liaison between the organizing committee and educational institutions.</li>
-                        <li>Successfully executed nationwide outreach to invite high schools across Indonesia to participate in the FCEC paper competition, ensuring clear communication and smooth coordination with prospective participants.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="py-20 bg-slate-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white text-center mb-4">Education</h2>
-            <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
-            
-            <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-accent flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition mb-6">
-                <div>
-                    <h3 class="text-2xl font-bold text-white mb-1">Universitas Gadjah Mada (UGM)</h3>
-                    <p class="text-lg text-gray-300 font-medium mb-1">Bachelor of Civil Engineering</p>
-                    <p class="text-gray-500">Concentration in Structural Engineering</p>
-                </div>
-                <div class="mt-4 md:mt-0 text-left md:text-right">
-                    <span class="block text-accent font-bold text-lg">GPA: 2.87 / 4.00</span>
-                    <span class="block text-gray-500 text-sm mt-1">Aug 2021 - Aug 2026</span>
-                </div>
-            </div>
-
-            <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-md border-l-4 border-l-slate-500 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-lg transition">
-                <div>
-                    <h3 class="text-2xl font-bold text-white mb-1">SMAN 78 Jakarta</h3>
-                    <p class="text-lg text-gray-300 font-medium mb-1">Senior High School</p>
-                    <p class="text-gray-500">Science Major (MIPA)</p>
-                </div>
-                <div class="mt-4 md:mt-0 text-left md:text-right">
-                    <span class="block text-gray-500 text-sm mt-1">Jul 2018 - Jul 2021</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-slate-950 text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
-            <div class="w-16 h-1 bg-accent mx-auto mb-10"></div>
-            <p class="text-gray-400 mb-10">Interested in discussing job opportunities or collaborations? Feel free to reach out through the contacts below.</p>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fakhri31102@gmail.com&su=Inquiry%20from%20Portfolio" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
-                    <i class="fa-solid fa-envelope text-xl"></i>
-                    <span class="font-medium">fakhri31102@gmail.com</span>
-                </a>
-                <a href="https://wa.me/6281299645659" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
-                    <i class="fa-solid fa-phone text-xl"></i>
-                    <span class="font-medium">+62 812-9964-5659</span>
-                </a>
-                <a href="https://www.linkedin.com/in/fakhrimrf/" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
-                    <i class="fa-brands fa-linkedin text-xl"></i>
-                    <span class="font-medium">LinkedIn Profile</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-black text-gray-600 py-6 text-center text-sm">
-        <p>&copy; 2026 Nurul Fakhri Ma'arif. All rights reserved.</p>
-    </footer>
+    </main> <!-- /AKHIR DARI WRAPPER PDF -->
 
     <!-- ==========================================
-         MODAL / LIGHTBOX SECTIONS (DARK MODE)
+         MODAL / LIGHTBOX SECTIONS
          ========================================== -->
 
     <!-- Modal: Pasar Terban (Slideshow) -->
@@ -390,13 +401,13 @@
                     <img src="KP_2-3.jpeg" alt="Terban 3" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
                 <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
-                    <img src="KP_2-4.JPG" alt="Terban 4" class="max-w-full max-h-full object-contain rounded shadow-lg">
+                    <img src="KP_2-4.jpeg" alt="Terban 4" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
                 <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
-                    <img src="KP_2-5.jpg" alt="Terban 5" class="max-w-full max-h-full object-contain rounded shadow-lg">
+                    <img src="KP_2-5.jpeg" alt="Terban 5" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
                 <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
-                    <img src="KP_2-6.jpg" alt="Terban 6" class="max-w-full max-h-full object-contain rounded shadow-lg">
+                    <img src="KP_2-6.jpeg" alt="Terban 6" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>
                 <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
                     <img src="KP_2-7.jpeg" alt="Terban 7" class="max-w-full max-h-full object-contain rounded shadow-lg">
@@ -538,6 +549,7 @@
 
     <!-- Javascript -->
     <script>
+        // Logika Slideshow & Modal
         let slideIndex = {
             'terban': 0,
             'jababeka': 0,
@@ -558,7 +570,6 @@
             document.getElementById(modalId).classList.add('hidden');
             document.body.style.overflow = 'auto'; 
             
-            // Hentikan video yang sedang berputar jika modal ditutup
             if (modalId === 'modal-capstone') {
                 stopVideos('capstone');
             }
@@ -568,7 +579,6 @@
             let slides = document.querySelectorAll('.slide-' + gallery);
             if (slides.length === 0) return;
             
-            // Logika cerdas: Hentikan video sebelumnya saat slide diganti (khusus untuk gallery video)
             if (gallery === 'capstone') {
                 stopVideos('capstone');
             }
@@ -586,19 +596,17 @@
             showSlide(gallery, slideIndex[gallery]);
         }
         
-        // Fungsi untuk me-refresh iframe (berguna untuk stop video yang sedang jalan)
         function stopVideos(gallery) {
             let slides = document.querySelectorAll('.slide-' + gallery);
             slides.forEach(slide => {
                 let iframe = slide.querySelector('iframe');
                 if(iframe) {
                     let src = iframe.src;
-                    iframe.src = src; // trick to stop playback
+                    iframe.src = src; 
                 }
             });
         }
 
-        // Tutup modal jika mengklik area gelap di luar modal
         window.onclick = function(event) {
             const modals = ['modal-terban', 'modal-jababeka', 'modal-thesis', 'modal-capstone'];
             modals.forEach(id => {
@@ -606,6 +614,54 @@
                 if (event.target === modalEl) {
                     closeModal(id);
                 }
+            });
+        }
+
+        // =====================================
+        // FUNGSI GENERATE PDF DINAMIS
+        // =====================================
+        function generatePDF() {
+            const btn = document.getElementById('btn-generate-pdf');
+            const originalText = btn.innerHTML;
+            
+            // Ubah tombol jadi loading
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
+            btn.disabled = true;
+
+            // Sembunyikan Navbar agar tidak ikut tercetak menutupi konten
+            const nav = document.getElementById('navbar');
+            nav.style.display = 'none';
+
+            // Ambil hanya area konten utama (mengabaikan modal yang sedang ditutup)
+            const element = document.getElementById('main-content');
+
+            // Opsi untuk PDF (Background mengikuti warna dark mode slate-950/900)
+            const opt = {
+                margin:       [10, 0, 10, 0], // Margin Atas, Kiri, Bawah, Kanan
+                filename:     "Portfolio_Nurul_Fakhri_Maarif.pdf",
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { 
+                    scale: 2, 
+                    useCORS: true, 
+                    backgroundColor: '#020617' // Warna base darkmode HTML
+                },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                // Membantu mencegah bagian terpotong secara acak
+                pagebreak:    { mode: ['css', 'legacy'] }
+            };
+
+            // Proses convert html ke pdf
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Kembalikan tampilan tombol dan navbar seperti semula
+                nav.style.display = 'block';
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }).catch(err => {
+                console.error("PDF Generation Error:", err);
+                nav.style.display = 'block';
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                alert("Terjadi kesalahan saat memproses PDF.");
             });
         }
     </script>
