@@ -14,7 +14,6 @@
     <meta property="og:url" content="https://fakhrimrf.my.id/">
     <meta property="og:title" content="Nurul Fakhri Ma'arif | Civil & Structural Engineer">
     <meta property="og:description" content="Portfolio of Nurul Fakhri Ma'arif, a Civil Engineering graduate specializing in structural supervision, project management, and data automation.">
-    <!-- Pastikan file social-preview.jpg ada di foldermu -->
     <meta property="og:image" content="https://fakhrimrf.github.io/social-preview.jpg">
 
     <!-- Twitter -->
@@ -65,138 +64,6 @@
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #475569; }
-
-        /* ==========================================
-           PENGATURAN KHUSUS UNTUK GENERATE PROPER PDF 
-           ========================================== */
-        @media print {
-            /* Pengaturan Kertas Standar A4 */
-            @page { 
-                margin: 1.2cm 1.5cm; 
-                size: A4 portrait;
-            }
-            
-            /* Reset Warna Background dan Font Utama */
-            body, main, section, div {
-                background-color: white !important;
-                background: none !important;
-                color: #1e293b !important; /* Dark Slate (Lebih premium dari hitam pekat) */
-            }
-            
-            /* Paksa browser mencetak elemen berwarna (seperti garis tepi) */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                box-shadow: none !important;
-            }
-
-            body { font-size: 10pt; line-height: 1.5; }
-
-            /* Sembunyikan elemen Web-Only (Tombol, Navigasi, Iframe, Gambar Hero) */
-            nav, button, footer, .pdf-ignore, #hero img, .fa-bars, .slide-fade, iframe, .w-16.h-1.bg-accent {
-                display: none !important;
-            }
-
-            /* CSS MAGIC: Susun ulang tata letak (Pindah Contact ke bawah Hero) */
-            main { display: flex; flex-direction: column; }
-            #hero { order: 1; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 10px !important; }
-            #contact { order: 2; margin-bottom: 20px !important; padding: 0 0 15px 0 !important; border-bottom: 2px solid #e2e8f0 !important; }
-            #about { order: 3; }
-            #skills { order: 4; }
-            #experience { order: 5; }
-            #projects { order: 6; }
-            #education { order: 7; }
-
-            /* HERO SECTION (Menjadi Header CV) */
-            #hero { text-align: left !important; }
-            #hero p { display: none !important; } /* Hilangkan "Welcome to my portfolio" */
-            #hero h1 { font-size: 26pt !important; color: #0f172a !important; margin-bottom: 5px !important; line-height: 1.1 !important; font-weight: bold !important; }
-            #hero h2 { font-size: 13pt !important; color: #3b82f6 !important; margin: 0 !important; font-weight: 600 !important; }
-
-            /* CONTACT SECTION (Menjadi Info Kontak di bawah Nama) */
-            #contact h2, #contact .w-16, #contact > p { display: none !important; } /* Sembunyikan judul "Let's connect" */
-            #contact .flex { 
-                flex-direction: row !important; gap: 20px !important; 
-                justify-content: flex-start !important; flex-wrap: wrap !important;
-            }
-            #contact a { 
-                padding: 0 !important; border: none !important; background: transparent !important; 
-                color: #475569 !important; font-size: 10pt !important;
-                display: flex !important; align-items: center !important; gap: 8px !important;
-            }
-            /* Tampilkan teks di sebelah icon saat diprint */
-            #contact a span { display: inline-block !important; color: #334155 !important; }
-
-            /* HEADING TIAP SECTION */
-            section h2 { 
-                font-size: 14pt !important; color: #0f172a !important; 
-                text-align: left !important; margin-bottom: 15px !important; 
-                border-bottom: 2px solid #3b82f6 !important; padding-bottom: 5px !important; text-transform: uppercase;
-            }
-
-            /* SPACING DAN PARAGRAF */
-            section { padding: 10px 0 !important; page-break-inside: auto; }
-            p { text-align: justify !important; color: #334155 !important; }
-
-            /* KOTAK-KOTAK PENGALAMAN & PROYEK (Menjadi format list bergaris samping) */
-            .bg-slate-900, .bg-slate-800, .bg-slate-950 {
-                background-color: transparent !important;
-                border: none !important;
-                border-left: 3px solid #3b82f6 !important;
-                border-radius: 0 !important;
-                padding: 0 0 0 15px !important;
-                margin-bottom: 20px !important;
-                page-break-inside: avoid; /* Mencegah item terpotong di tengah halaman */
-            }
-
-            /* TIPOGRAFI DALAM CARD */
-            h3 { font-size: 12pt !important; color: #0f172a !important; margin-bottom: 2px !important; font-weight: bold !important;}
-            h4 { font-size: 10.5pt !important; color: #334155 !important; font-weight: 600 !important;}
-            
-            /* TANGGAL DAN LABEL */
-            .bg-accent\/20, .rounded-full {
-                background-color: transparent !important;
-                border: none !important;
-                color: #64748b !important;
-                padding: 0 !important;
-                font-weight: normal !important;
-                font-style: italic;
-            }
-
-            /* FORMAT KHUSUS SKILLS (Jadi 3 Kolom Rapih) */
-            #skills .grid {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr 1fr !important;
-                gap: 15px !important;
-            }
-            #skills .bg-slate-900 {
-                border-left: none !important;
-                border-top: 3px solid #3b82f6 !important;
-                background-color: #f8fafc !important; /* Abu-abu sangat terang */
-                padding: 10px !important;
-            }
-
-            /* FORMAT KHUSUS PROYEK (Disusun ke bawah) */
-            #projects .grid { display: block !important; }
-            #projects .bg-slate-900 { margin-bottom: 15px !important; }
-            
-            /* FORMAT LIST / BULLET POINTS */
-            ul.text-gray-400 { color: #334155 !important; margin-bottom: 5px !important;}
-            ul.list-disc { padding-left: 15px !important; }
-            li { margin-bottom: 3px !important; }
-            
-            /* MARGIN DALAM CARD */
-            .mb-6 { margin-bottom: 8px !important; }
-            .mb-4 { margin-bottom: 6px !important; }
-            
-            /* FORMAT PENDIDIKAN (Sejajar Kiri & Kanan) */
-            #education .md\:flex-row {
-                display: flex !important;
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: baseline !important;
-            }
-        }
     </style>
 </head>
 <body class="bg-slate-900 text-gray-300 font-sans antialiased relative">
@@ -208,11 +75,13 @@
                 <div class="flex-shrink-0">
                     <a href="#" class="font-bold text-xl text-white tracking-tight">FAKHRI<span class="text-accent">MRF</span></a>
                 </div>
+                <!-- Tombol Hamburger Menu (HP) -->
                 <div class="md:hidden flex items-center">
-                    <button class="text-gray-400 hover:text-white focus:outline-none">
+                    <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white focus:outline-none transition">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
+                <!-- Menu Desktop -->
                 <div class="hidden md:flex space-x-8">
                     <a href="#about" class="text-gray-400 hover:text-accent transition font-medium">About</a>
                     <a href="#skills" class="text-gray-400 hover:text-accent transition font-medium">Skills</a>
@@ -221,6 +90,18 @@
                     <a href="#education" class="text-gray-400 hover:text-accent transition font-medium">Education</a>
                     <a href="#contact" class="text-gray-400 hover:text-accent transition font-medium">Contact</a>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 shadow-xl">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition">About</a>
+                <a href="#skills" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition">Skills</a>
+                <a href="#experience" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition">Experience</a>
+                <a href="#projects" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition">Projects</a>
+                <a href="#education" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition">Education</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition">Contact</a>
             </div>
         </div>
     </nav>
@@ -239,14 +120,10 @@
                         Civil Engineering Graduate
                     </h2>
                     <div class="flex flex-wrap justify-center lg:justify-start gap-3">
-                        <a href="#experience" class="bg-accent hover:bg-blue-600 text-white px-5 py-3 rounded-lg font-medium transition shadow-lg shadow-accent/20 pdf-ignore">View Experience</a>
-                        <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-slate-800 text-white hover:bg-slate-700 border border-slate-700 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2 pdf-ignore">
+                        <a href="#experience" class="bg-accent hover:bg-blue-600 text-white px-5 py-3 rounded-lg font-medium transition shadow-lg shadow-accent/20">View Experience</a>
+                        <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-slate-800 text-white hover:bg-slate-700 border border-slate-700 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
                             <i class="fa-solid fa-download"></i> Download CV
                         </a>
-                        <!-- Tombol Generate Proper PDF -->
-                        <button onclick="window.print()" class="bg-indigo-600 text-white hover:bg-indigo-500 border border-indigo-500 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2 pdf-ignore">
-                            <i class="fa-solid fa-file-pdf"></i> Save Web as PDF
-                        </button>
                     </div>
                 </div>
                 <div class="flex-1 flex justify-center lg:justify-end">
@@ -259,10 +136,10 @@
 
         <!-- About Section -->
         <section id="about" class="py-20 bg-slate-900">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center print:text-left">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
                 <div class="w-16 h-1 bg-accent mx-auto mb-8"></div>
-                <p class="text-lg text-gray-400 leading-relaxed text-justify md:text-center print:text-justify print:text-[10pt]">
+                <p class="text-lg text-gray-400 leading-relaxed text-justify md:text-center">
                     Civil Engineering fresh graduate from Universitas Gadjah Mada with a strong focus on construction supervision, quality control, and field operations. Possesses a solid analytical foundation combined with practical exposure to verifying field execution against shop drawings and ensuring strict adherence to technical specifications. Gained valuable hands-on experience as an intern overseeing daily construction activities and managing progress documentation. Eager to leverage strong adaptability, problem-solving abilities, and project tracking skills to ensure smooth, timely, and safe project delivery.
                 </p>
             </div>
@@ -276,33 +153,33 @@
                 
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
-                        <i class="fa-solid fa-building text-3xl text-accent mb-4 pdf-ignore"></i>
+                        <i class="fa-solid fa-building text-3xl text-accent mb-4"></i>
                         <h3 class="text-xl font-bold text-white mb-4">Structural & Field</h3>
                         <ul class="space-y-2 text-gray-400">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Structural Modeling (3D)</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Engineering Drawing Review</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Quality Control & Inspection</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Design Review & Assessment</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Structural Modeling (3D)</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Engineering Drawing Review</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Quality Control & Inspection</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Design Review & Assessment</li>
                         </ul>
                     </div>
                     <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
-                        <i class="fa-solid fa-chart-line text-3xl text-accent mb-4 pdf-ignore"></i>
+                        <i class="fa-solid fa-chart-line text-3xl text-accent mb-4"></i>
                         <h3 class="text-xl font-bold text-white mb-4">Project Management</h3>
                         <ul class="space-y-2 text-gray-400">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> S-Curve Variance Analysis</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Early Warning Systems</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Work Breakdown Structure</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Progress Tracking</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> S-Curve Variance Analysis</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Early Warning Systems</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Work Breakdown Structure</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Progress Tracking</li>
                         </ul>
                     </div>
                     <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
-                        <i class="fa-solid fa-code text-3xl text-accent mb-4 pdf-ignore"></i>
+                        <i class="fa-solid fa-code text-3xl text-accent mb-4"></i>
                         <h3 class="text-xl font-bold text-white mb-4">Software & Tools</h3>
                         <ul class="space-y-2 text-gray-400">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> AutoCAD, SAP2000, Revit</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> SketchUp, Enscape</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Python, Excel VBA</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Microsoft Office</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> AutoCAD, SAP2000, Revit</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> SketchUp, Enscape</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Python, Excel VBA</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Microsoft Office</li>
                         </ul>
                     </div>
                 </div>
@@ -331,7 +208,7 @@
                             <li>Monitored daily construction activities, gaining hands-on understanding of structural integrity and translating design elements into safe field execution.</li>
                             <li>Documented daily progress and generated CAD outputs as a weekly progress summary for Revit integration.</li>
                         </ul>
-                        <div class="flex justify-between items-end flex-wrap gap-4 pdf-ignore">
+                        <div class="flex justify-between items-end flex-wrap gap-4">
                             <div class="flex gap-2 flex-wrap">
                                 <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Progress Control</span>
                                 <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Technical Inspection</span>
@@ -356,7 +233,7 @@
                             <li>Shadowed engineering teams during field operations to observe structural quality control procedures, including soil testing and foundational works.</li>
                             <li>Actively enhanced structural modeling and detailing capabilities through intensive practical training in Tekla Structures.</li>
                         </ul>
-                        <div class="flex justify-between items-end flex-wrap gap-4 pdf-ignore">
+                        <div class="flex justify-between items-end flex-wrap gap-4">
                             <div class="flex gap-2 flex-wrap">
                                 <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">Field Supervision</span>
                                 <span class="bg-slate-900 border border-slate-600 text-gray-300 text-xs px-3 py-1 rounded">BIM (Tekla)</span>
@@ -386,7 +263,7 @@
                             <li>Developed an early warning system to track work schedules and utilized S-curve analysis to evaluate and compare planned versus actual project progress.</li>
                             <li>Demonstrated advanced computational programming skills (Python/VBA) through machine learning implementation.</li>
                         </ul>
-                        <div class="mt-auto pdf-ignore">
+                        <div class="mt-auto">
                             <div class="flex gap-2 flex-wrap mb-4">
                                 <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Python</span>
                                 <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Excel VBA</span>
@@ -407,7 +284,7 @@
                             <li>Designed the geometric dimensions and physical structural layout by integrating hydrological data and topographical site conditions.</li>
                             <li>Executed complete 3D modeling and rendering, translating raw ground contour data into a detailed visual representation of the final structure.</li>
                         </ul>
-                        <div class="mt-auto pdf-ignore">
+                        <div class="mt-auto">
                             <div class="flex gap-2 flex-wrap mb-4">
                                 <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Structural Analysis</span>
                                 <span class="bg-slate-800 text-gray-300 border border-slate-600 text-xs px-3 py-1 rounded-full">Building Design</span>
@@ -523,7 +400,7 @@
 
     </main>
 
-    <!-- Modal sections dan script JS Anda yang asli (tidak diubah) ada di bawah sini -->
+    <!-- Modal sections -->
     <div id="modal-terban" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
         <div class="bg-slate-800 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col modal-fade-in relative border border-slate-700 overflow-hidden">
             <button onclick="closeModal('modal-terban')" class="absolute top-4 right-4 bg-slate-700 hover:bg-red-500 text-gray-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10">
@@ -677,7 +554,15 @@
         </div>
     </div>
 
+    <!-- JS Untuk Mengatur Animasi Modal & Mobile Menu -->
     <script>
+        // --- LOGIKA MOBILE MENU ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // --- LOGIKA SLIDESHOW & MODAL ---
         let slideIndex = {
             'terban': 0,
             'jababeka': 0,
