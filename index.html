@@ -3,16 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
     <title>Nurul Fakhri Ma'arif | Civil & Structural Engineer</title>
+    <meta name="title" content="Nurul Fakhri Ma'arif | Civil & Structural Engineer">
+    <meta name="description" content="Portfolio of Nurul Fakhri Ma'arif, a Civil Engineering graduate specializing in structural supervision, project management, and data automation.">
+
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fakhrimrf.my.id/">
+    <meta property="og:title" content="Nurul Fakhri Ma'arif | Civil & Structural Engineer">
+    <meta property="og:description" content="Portfolio of Nurul Fakhri Ma'arif, a Civil Engineering graduate specializing in structural supervision, project management, and data automation.">
+    <!-- Pastikan file social-preview.jpg ada di foldermu -->
+    <meta property="og:image" content="https://fakhrimrf.github.io/social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fakhrimrf.my.id/">
+    <meta property="twitter:title" content="Nurul Fakhri Ma'arif | Civil & Structural Engineer">
+    <meta property="twitter:description" content="Portfolio of Nurul Fakhri Ma'arif, a Civil Engineering graduate specializing in structural supervision, project management, and data automation.">
+    <meta property="twitter:image" content="https://fakhrimrf.github.io/social-preview.jpg">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Library untuk Generate PDF dinamis -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     
     <script>
         tailwind.config = {
@@ -48,12 +65,60 @@
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        /* ==========================================
+           PENGATURAN KHUSUS UNTUK GENERATE PROPER PDF 
+           ========================================== */
+        @media print {
+            @page { margin: 1.5cm; }
+            
+            body, main, section, div {
+                background-color: white !important;
+                background: none !important;
+                color: black !important;
+            }
+            
+            body * {
+                color: black !important;
+                box-shadow: none !important;
+            }
+
+            /* Sembunyikan elemen UI interaktif saat di-print */
+            nav, button, footer, .pdf-ignore {
+                display: none !important;
+            }
+
+            /* Hapus format card agar menyatu seperti dokumen biasa */
+            .bg-slate-900, .bg-slate-800, .bg-slate-950 {
+                background-color: transparent !important;
+                border: none !important;
+                border-bottom: 1px solid #e5e7eb !important;
+                padding: 10px 0 !important;
+            }
+
+            /* Ubah layout grid menjadi memanjang (list) agar muat di PDF */
+            .grid { display: block !important; }
+            .grid > div {
+                margin-bottom: 24px !important;
+                page-break-inside: avoid;
+            }
+
+            section {
+                padding: 15px 0 !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Sembunyikan elemen dekoratif hero image di print */
+            #hero img {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-gray-300 font-sans antialiased relative">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full bg-slate-900/95 backdrop-blur-sm shadow-md z-50 border-b border-slate-800">
+    <nav class="fixed w-full bg-slate-900/95 backdrop-blur-sm shadow-md z-50 border-b border-slate-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0">
@@ -76,7 +141,6 @@
         </div>
     </nav>
 
-    <!-- WRAPPER UNTUK PDF: Hanya area ini yang akan dicetak -->
     <main id="main-content">
         
         <!-- Hero Section -->
@@ -95,9 +159,9 @@
                         <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-slate-800 text-white hover:bg-slate-700 border border-slate-700 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
                             <i class="fa-solid fa-download"></i> Download CV
                         </a>
-                        <!-- Tombol Generate PDF Dinamis Baru -->
-                        <button id="btn-generate-pdf" onclick="generatePDF()" class="bg-indigo-600 text-white hover:bg-indigo-500 border border-indigo-500 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
-                            <i class="fa-solid fa-file-pdf"></i> Generate Web PDF
+                        <!-- Tombol Generate Proper PDF -->
+                        <button onclick="window.print()" class="bg-indigo-600 text-white hover:bg-indigo-500 border border-indigo-500 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
+                            <i class="fa-solid fa-file-pdf"></i> Save Web as PDF
                         </button>
                     </div>
                 </div>
@@ -128,33 +192,33 @@
                 
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
-                        <i class="fa-solid fa-building text-3xl text-accent mb-4"></i>
+                        <i class="fa-solid fa-building text-3xl text-accent mb-4 pdf-ignore"></i>
                         <h3 class="text-xl font-bold text-white mb-4">Structural & Field</h3>
                         <ul class="space-y-2 text-gray-400">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Structural Modeling (3D)</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Engineering Drawing Review</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Quality Control & Inspection</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Design Review & Assessment</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Structural Modeling (3D)</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Engineering Drawing Review</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Quality Control & Inspection</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Design Review & Assessment</li>
                         </ul>
                     </div>
                     <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
-                        <i class="fa-solid fa-chart-line text-3xl text-accent mb-4"></i>
+                        <i class="fa-solid fa-chart-line text-3xl text-accent mb-4 pdf-ignore"></i>
                         <h3 class="text-xl font-bold text-white mb-4">Project Management</h3>
                         <ul class="space-y-2 text-gray-400">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> S-Curve Variance Analysis</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Early Warning Systems</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Work Breakdown Structure</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Progress Tracking</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> S-Curve Variance Analysis</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Early Warning Systems</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Work Breakdown Structure</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Progress Tracking</li>
                         </ul>
                     </div>
                     <div class="bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-700 hover:border-slate-500 transition">
-                        <i class="fa-solid fa-code text-3xl text-accent mb-4"></i>
+                        <i class="fa-solid fa-code text-3xl text-accent mb-4 pdf-ignore"></i>
                         <h3 class="text-xl font-bold text-white mb-4">Software & Tools</h3>
                         <ul class="space-y-2 text-gray-400">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> AutoCAD, SAP2000, Revit</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> SketchUp, Enscape</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Python, Excel VBA</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3"></i> Microsoft Office</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> AutoCAD, SAP2000, Revit</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> SketchUp, Enscape</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Python, Excel VBA</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mt-1 mr-3 pdf-ignore"></i> Microsoft Office</li>
                         </ul>
                     </div>
                 </div>
@@ -352,7 +416,7 @@
                 <div class="w-16 h-1 bg-accent mx-auto mb-10"></div>
                 <p class="text-gray-400 mb-10">Interested in discussing job opportunities or collaborations? Feel free to reach out through the contacts below.</p>
                 
-                <div class="flex flex-col md:flex-row justify-center gap-6">
+                <div class="flex flex-col md:flex-row justify-center gap-6 pdf-ignore">
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fakhri31102@gmail.com&su=Inquiry%20from%20Portfolio" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
                         <i class="fa-solid fa-envelope text-xl"></i>
                         <span class="font-medium">fakhri31102@gmail.com</span>
@@ -373,7 +437,7 @@
             <p>&copy; 2026 Nurul Fakhri Ma'arif. All rights reserved.</p>
         </footer>
 
-    </main> <!-- /AKHIR DARI WRAPPER PDF -->
+    </main>
 
     <!-- ==========================================
          MODAL / LIGHTBOX SECTIONS
@@ -389,7 +453,7 @@
                 <h3 class="text-2xl font-bold text-white">Pasar Terban Revitalization Project</h3>
                 <p class="text-gray-400 text-sm">Site supervision & daily progress.</p>
             </div>
-            <!-- Area Slideshow (Rasio Terjaga, Tidak Terpotong) -->
+            <!-- Area Slideshow (Rasio Terjaga) -->
             <div class="p-4 flex-grow relative flex items-center justify-center bg-slate-900 h-[60vh]">
                 <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
                     <img src="KP_2-1.jpeg" alt="Terban 1" class="max-w-full max-h-full object-contain rounded shadow-lg">
@@ -416,7 +480,6 @@
                     <img src="KP_2-8.jpeg" alt="Terban 8" class="max-w-full max-h-full object-contain rounded shadow-lg">
                 </div>                
                 
-                <!-- Navigasi -->
                 <button onclick="changeSlide('terban', -1)" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-accent text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition">
                     <i class="fa-solid fa-chevron-left text-lg sm:text-xl"></i>
                 </button>
@@ -607,6 +670,7 @@
             });
         }
 
+        // Tutup modal jika mengklik area gelap di luar konten modal
         window.onclick = function(event) {
             const modals = ['modal-terban', 'modal-jababeka', 'modal-thesis', 'modal-capstone'];
             modals.forEach(id => {
@@ -614,54 +678,6 @@
                 if (event.target === modalEl) {
                     closeModal(id);
                 }
-            });
-        }
-
-        // =====================================
-        // FUNGSI GENERATE PDF DINAMIS
-        // =====================================
-        function generatePDF() {
-            const btn = document.getElementById('btn-generate-pdf');
-            const originalText = btn.innerHTML;
-            
-            // Ubah tombol jadi loading
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
-            btn.disabled = true;
-
-            // Sembunyikan Navbar agar tidak ikut tercetak menutupi konten
-            const nav = document.getElementById('navbar');
-            nav.style.display = 'none';
-
-            // Ambil hanya area konten utama (mengabaikan modal yang sedang ditutup)
-            const element = document.getElementById('main-content');
-
-            // Opsi untuk PDF (Background mengikuti warna dark mode slate-950/900)
-            const opt = {
-                margin:       [10, 0, 10, 0], // Margin Atas, Kiri, Bawah, Kanan
-                filename:     "Portfolio_Nurul_Fakhri_Maarif.pdf",
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { 
-                    scale: 2, 
-                    useCORS: true, 
-                    backgroundColor: '#020617' // Warna base darkmode HTML
-                },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                // Membantu mencegah bagian terpotong secara acak
-                pagebreak:    { mode: ['css', 'legacy'] }
-            };
-
-            // Proses convert html ke pdf
-            html2pdf().set(opt).from(element).save().then(() => {
-                // Kembalikan tampilan tombol dan navbar seperti semula
-                nav.style.display = 'block';
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }).catch(err => {
-                console.error("PDF Generation Error:", err);
-                nav.style.display = 'block';
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                alert("Terjadi kesalahan saat memproses PDF.");
             });
         }
     </script>
