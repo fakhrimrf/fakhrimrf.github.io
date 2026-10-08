@@ -70,47 +70,131 @@
            PENGATURAN KHUSUS UNTUK GENERATE PROPER PDF 
            ========================================== */
         @media print {
-            @page { margin: 1.5cm; }
+            /* Pengaturan Kertas Standar A4 */
+            @page { 
+                margin: 1.2cm 1.5cm; 
+                size: A4 portrait;
+            }
             
+            /* Reset Warna Background dan Font Utama */
             body, main, section, div {
                 background-color: white !important;
                 background: none !important;
-                color: black !important;
+                color: #1e293b !important; /* Dark Slate (Lebih premium dari hitam pekat) */
             }
             
-            body * {
-                color: black !important;
+            /* Paksa browser mencetak elemen berwarna (seperti garis tepi) */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
                 box-shadow: none !important;
             }
 
-            /* Sembunyikan elemen UI interaktif saat di-print */
-            nav, button, footer, .pdf-ignore {
+            body { font-size: 10pt; line-height: 1.5; }
+
+            /* Sembunyikan elemen Web-Only (Tombol, Navigasi, Iframe, Gambar Hero) */
+            nav, button, footer, .pdf-ignore, #hero img, .fa-bars, .slide-fade, iframe, .w-16.h-1.bg-accent {
                 display: none !important;
             }
 
-            /* Hapus format card agar menyatu seperti dokumen biasa */
+            /* CSS MAGIC: Susun ulang tata letak (Pindah Contact ke bawah Hero) */
+            main { display: flex; flex-direction: column; }
+            #hero { order: 1; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 10px !important; }
+            #contact { order: 2; margin-bottom: 20px !important; padding: 0 0 15px 0 !important; border-bottom: 2px solid #e2e8f0 !important; }
+            #about { order: 3; }
+            #skills { order: 4; }
+            #experience { order: 5; }
+            #projects { order: 6; }
+            #education { order: 7; }
+
+            /* HERO SECTION (Menjadi Header CV) */
+            #hero { text-align: left !important; }
+            #hero p { display: none !important; } /* Hilangkan "Welcome to my portfolio" */
+            #hero h1 { font-size: 26pt !important; color: #0f172a !important; margin-bottom: 5px !important; line-height: 1.1 !important; font-weight: bold !important; }
+            #hero h2 { font-size: 13pt !important; color: #3b82f6 !important; margin: 0 !important; font-weight: 600 !important; }
+
+            /* CONTACT SECTION (Menjadi Info Kontak di bawah Nama) */
+            #contact h2, #contact .w-16, #contact > p { display: none !important; } /* Sembunyikan judul "Let's connect" */
+            #contact .flex { 
+                flex-direction: row !important; gap: 20px !important; 
+                justify-content: flex-start !important; flex-wrap: wrap !important;
+            }
+            #contact a { 
+                padding: 0 !important; border: none !important; background: transparent !important; 
+                color: #475569 !important; font-size: 10pt !important;
+                display: flex !important; align-items: center !important; gap: 8px !important;
+            }
+            /* Tampilkan teks di sebelah icon saat diprint */
+            #contact a span { display: inline-block !important; color: #334155 !important; }
+
+            /* HEADING TIAP SECTION */
+            section h2 { 
+                font-size: 14pt !important; color: #0f172a !important; 
+                text-align: left !important; margin-bottom: 15px !important; 
+                border-bottom: 2px solid #3b82f6 !important; padding-bottom: 5px !important; text-transform: uppercase;
+            }
+
+            /* SPACING DAN PARAGRAF */
+            section { padding: 10px 0 !important; page-break-inside: auto; }
+            p { text-align: justify !important; color: #334155 !important; }
+
+            /* KOTAK-KOTAK PENGALAMAN & PROYEK (Menjadi format list bergaris samping) */
             .bg-slate-900, .bg-slate-800, .bg-slate-950 {
                 background-color: transparent !important;
                 border: none !important;
-                border-bottom: 1px solid #e5e7eb !important;
-                padding: 10px 0 !important;
+                border-left: 3px solid #3b82f6 !important;
+                border-radius: 0 !important;
+                padding: 0 0 0 15px !important;
+                margin-bottom: 20px !important;
+                page-break-inside: avoid; /* Mencegah item terpotong di tengah halaman */
             }
 
-            /* Ubah layout grid menjadi memanjang (list) agar muat di PDF */
-            .grid { display: block !important; }
-            .grid > div {
-                margin-bottom: 24px !important;
-                page-break-inside: avoid;
-            }
-
-            section {
-                padding: 15px 0 !important;
-                page-break-inside: avoid;
-            }
+            /* TIPOGRAFI DALAM CARD */
+            h3 { font-size: 12pt !important; color: #0f172a !important; margin-bottom: 2px !important; font-weight: bold !important;}
+            h4 { font-size: 10.5pt !important; color: #334155 !important; font-weight: 600 !important;}
             
-            /* Sembunyikan elemen dekoratif hero image di print */
-            #hero img {
-                display: none !important;
+            /* TANGGAL DAN LABEL */
+            .bg-accent\/20, .rounded-full {
+                background-color: transparent !important;
+                border: none !important;
+                color: #64748b !important;
+                padding: 0 !important;
+                font-weight: normal !important;
+                font-style: italic;
+            }
+
+            /* FORMAT KHUSUS SKILLS (Jadi 3 Kolom Rapih) */
+            #skills .grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr !important;
+                gap: 15px !important;
+            }
+            #skills .bg-slate-900 {
+                border-left: none !important;
+                border-top: 3px solid #3b82f6 !important;
+                background-color: #f8fafc !important; /* Abu-abu sangat terang */
+                padding: 10px !important;
+            }
+
+            /* FORMAT KHUSUS PROYEK (Disusun ke bawah) */
+            #projects .grid { display: block !important; }
+            #projects .bg-slate-900 { margin-bottom: 15px !important; }
+            
+            /* FORMAT LIST / BULLET POINTS */
+            ul.text-gray-400 { color: #334155 !important; margin-bottom: 5px !important;}
+            ul.list-disc { padding-left: 15px !important; }
+            li { margin-bottom: 3px !important; }
+            
+            /* MARGIN DALAM CARD */
+            .mb-6 { margin-bottom: 8px !important; }
+            .mb-4 { margin-bottom: 6px !important; }
+            
+            /* FORMAT PENDIDIKAN (Sejajar Kiri & Kanan) */
+            #education .md\:flex-row {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: baseline !important;
             }
         }
     </style>
@@ -155,12 +239,12 @@
                         Civil Engineering Graduate
                     </h2>
                     <div class="flex flex-wrap justify-center lg:justify-start gap-3">
-                        <a href="#experience" class="bg-accent hover:bg-blue-600 text-white px-5 py-3 rounded-lg font-medium transition shadow-lg shadow-accent/20">View Experience</a>
-                        <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-slate-800 text-white hover:bg-slate-700 border border-slate-700 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
+                        <a href="#experience" class="bg-accent hover:bg-blue-600 text-white px-5 py-3 rounded-lg font-medium transition shadow-lg shadow-accent/20 pdf-ignore">View Experience</a>
+                        <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-slate-800 text-white hover:bg-slate-700 border border-slate-700 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2 pdf-ignore">
                             <i class="fa-solid fa-download"></i> Download CV
                         </a>
                         <!-- Tombol Generate Proper PDF -->
-                        <button onclick="window.print()" class="bg-indigo-600 text-white hover:bg-indigo-500 border border-indigo-500 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2">
+                        <button onclick="window.print()" class="bg-indigo-600 text-white hover:bg-indigo-500 border border-indigo-500 px-5 py-3 rounded-lg font-medium transition shadow-lg flex items-center gap-2 pdf-ignore">
                             <i class="fa-solid fa-file-pdf"></i> Save Web as PDF
                         </button>
                     </div>
@@ -175,10 +259,10 @@
 
         <!-- About Section -->
         <section id="about" class="py-20 bg-slate-900">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center print:text-left">
                 <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
                 <div class="w-16 h-1 bg-accent mx-auto mb-8"></div>
-                <p class="text-lg text-gray-400 leading-relaxed text-justify md:text-center">
+                <p class="text-lg text-gray-400 leading-relaxed text-justify md:text-center print:text-justify print:text-[10pt]">
                     Civil Engineering fresh graduate from Universitas Gadjah Mada with a strong focus on construction supervision, quality control, and field operations. Possesses a solid analytical foundation combined with practical exposure to verifying field execution against shop drawings and ensuring strict adherence to technical specifications. Gained valuable hands-on experience as an intern overseeing daily construction activities and managing progress documentation. Eager to leverage strong adaptability, problem-solving abilities, and project tracking skills to ensure smooth, timely, and safe project delivery.
                 </p>
             </div>
@@ -416,7 +500,7 @@
                 <div class="w-16 h-1 bg-accent mx-auto mb-10"></div>
                 <p class="text-gray-400 mb-10">Interested in discussing job opportunities or collaborations? Feel free to reach out through the contacts below.</p>
                 
-                <div class="flex flex-col md:flex-row justify-center gap-6 pdf-ignore">
+                <div class="flex flex-col md:flex-row justify-center gap-6">
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fakhri31102@gmail.com&su=Inquiry%20from%20Portfolio" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
                         <i class="fa-solid fa-envelope text-xl"></i>
                         <span class="font-medium">fakhri31102@gmail.com</span>
@@ -427,7 +511,7 @@
                     </a>
                     <a href="https://www.linkedin.com/in/fakhrimrf/" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-accent border border-slate-700 hover:border-accent px-6 py-4 rounded-lg transition shadow-lg">
                         <i class="fa-brands fa-linkedin text-xl"></i>
-                        <span class="font-medium">LinkedIn Profile</span>
+                        <span class="font-medium">linkedin.com/in/fakhrimrf/</span>
                     </a>
                 </div>
             </div>
@@ -439,11 +523,7 @@
 
     </main>
 
-    <!-- ==========================================
-         MODAL / LIGHTBOX SECTIONS
-         ========================================== -->
-
-    <!-- Modal: Pasar Terban (Slideshow) -->
+    <!-- Modal sections dan script JS Anda yang asli (tidak diubah) ada di bawah sini -->
     <div id="modal-terban" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
         <div class="bg-slate-800 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col modal-fade-in relative border border-slate-700 overflow-hidden">
             <button onclick="closeModal('modal-terban')" class="absolute top-4 right-4 bg-slate-700 hover:bg-red-500 text-gray-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10">
@@ -453,7 +533,6 @@
                 <h3 class="text-2xl font-bold text-white">Pasar Terban Revitalization Project</h3>
                 <p class="text-gray-400 text-sm">Site supervision & daily progress.</p>
             </div>
-            <!-- Area Slideshow (Rasio Terjaga) -->
             <div class="p-4 flex-grow relative flex items-center justify-center bg-slate-900 h-[60vh]">
                 <div class="slide-terban slide-fade hidden w-full h-full flex justify-center items-center">
                     <img src="KP_2-1.jpeg" alt="Terban 1" class="max-w-full max-h-full object-contain rounded shadow-lg">
@@ -490,7 +569,6 @@
         </div>
     </div>
 
-    <!-- Modal: Jababeka (Slideshow) -->
     <div id="modal-jababeka" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
         <div class="bg-slate-800 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col modal-fade-in relative border border-slate-700 overflow-hidden">
             <button onclick="closeModal('modal-jababeka')" class="absolute top-4 right-4 bg-slate-700 hover:bg-red-500 text-gray-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10">
@@ -500,7 +578,6 @@
                 <h3 class="text-2xl font-bold text-white">Warehouse Construction Jababeka</h3>
                 <p class="text-gray-400 text-sm">Structural modeling and field technical assessment.</p>
             </div>
-            <!-- Area Slideshow (Rasio Terjaga) -->
             <div class="p-4 flex-grow relative flex items-center justify-center bg-slate-900 h-[60vh]">
                 <div class="slide-jababeka slide-fade hidden w-full h-full flex justify-center items-center">
                     <img src="KP_1-1.jpeg" alt="Jababeka 1" class="max-w-full max-h-full object-contain rounded shadow-lg">
@@ -531,7 +608,6 @@
         </div>
     </div>
 
-    <!-- Modal: Skripsi (Thesis) - EXCEL FULL SIZE -->
     <div id="modal-thesis" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
         <div class="bg-slate-800 rounded-xl w-full max-w-6xl max-h-[95vh] h-full flex flex-col modal-fade-in relative border border-slate-700 overflow-hidden">
             <button onclick="closeModal('modal-thesis')" class="absolute top-4 right-4 bg-slate-700 hover:bg-red-500 text-gray-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10">
@@ -541,15 +617,12 @@
                 <h3 class="text-2xl font-bold text-white mb-1">Live Excel Dashboard Preview</h3>
                 <p class="text-gray-400 text-sm">Interactive preview of the Delay Risk Detection System.</p>
             </div>
-            <!-- Area Iframe Diperbesar -->
             <div class="p-0 flex-grow relative bg-slate-900 h-full w-full">
-                <!-- Width 100% dan Height 100% agar menempati ruang penuh modal -->
                 <iframe src="https://1drv.ms/x/c/2b64307f0748c130/IQRtwPrDN48mSYJ2VYPbIv2sAfeXETpM0S6JePOgN-chY-E" class="w-full h-full absolute inset-0" frameborder="0" scrolling="yes"></iframe>
             </div>
         </div>
     </div>
 
-    <!-- Modal: Capstone (VIDEO SLIDESHOW) -->
     <div id="modal-capstone" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
         <div class="bg-slate-800 rounded-xl w-full max-w-5xl max-h-[95vh] flex flex-col modal-fade-in relative border border-slate-700 overflow-hidden">
             <button onclick="closeModal('modal-capstone')" class="absolute top-4 right-4 bg-slate-700 hover:bg-red-500 text-gray-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition z-10">
@@ -560,10 +633,8 @@
                 <p class="text-gray-400 text-sm">3D rendering video presentations.</p>
             </div>
             
-            <!-- Area Video Slideshow (Rasio 16:9 responsif) -->
             <div class="p-4 flex-grow relative flex items-center justify-center bg-black min-h-[50vh] sm:min-h-[70vh]">
                 
-                <!-- Video 1 -->
                 <div class="slide-capstone slide-fade hidden w-full max-w-4xl flex justify-center items-center">
                     <div class="w-full relative" style="padding-top: 56.25%;">
                         <iframe class="absolute top-0 left-0 w-full h-full rounded shadow-lg bg-slate-900" 
@@ -572,7 +643,6 @@
                     </div>
                 </div>
 
-                <!-- Video 2 -->
                 <div class="slide-capstone slide-fade hidden w-full max-w-4xl flex justify-center items-center">
                     <div class="w-full relative" style="padding-top: 56.25%;">
                         <iframe class="absolute top-0 left-0 w-full h-full rounded shadow-lg bg-slate-900" 
@@ -581,7 +651,6 @@
                     </div>
                 </div>
 
-                <!-- Video 3 -->
                 <div class="slide-capstone slide-fade hidden w-full max-w-4xl flex justify-center items-center">
                     <div class="w-full relative" style="padding-top: 56.25%;">
                         <iframe class="absolute top-0 left-0 w-full h-full rounded shadow-lg bg-slate-900" 
@@ -590,7 +659,6 @@
                     </div>
                 </div>
 
-                <!-- Video 4 -->
                 <div class="slide-capstone slide-fade hidden w-full max-w-4xl flex justify-center items-center">
                     <div class="w-full relative" style="padding-top: 56.25%;">
                         <iframe class="absolute top-0 left-0 w-full h-full rounded shadow-lg bg-slate-900" 
@@ -599,7 +667,6 @@
                     </div>
                 </div>
 
-                <!-- Navigasi Slider Video -->
                 <button onclick="changeSlide('capstone', -1)" class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-accent text-white w-10 h-10 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition">
                     <i class="fa-solid fa-chevron-left text-lg sm:text-2xl"></i>
                 </button>
@@ -610,9 +677,7 @@
         </div>
     </div>
 
-    <!-- Javascript -->
     <script>
-        // Logika Slideshow & Modal
         let slideIndex = {
             'terban': 0,
             'jababeka': 0,
@@ -670,7 +735,6 @@
             });
         }
 
-        // Tutup modal jika mengklik area gelap di luar konten modal
         window.onclick = function(event) {
             const modals = ['modal-terban', 'modal-jababeka', 'modal-thesis', 'modal-capstone'];
             modals.forEach(id => {
