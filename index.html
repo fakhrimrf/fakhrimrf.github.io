@@ -11,10 +11,13 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
+    <!-- FontAwesome (hanya untuk menu & kontak) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts: Inter (Body) & Playfair Display (Headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -23,7 +26,10 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'] 
+                    },
                     colors: {
                         bgmain: '#F9F8F4',    
                         bgalt: '#F0EFEB',     
@@ -43,19 +49,19 @@
 
         /* Kustomisasi scrollbar utama */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #F9F8F4; }
-        ::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #F9F8F4; border-left: 1px solid #e5e5e5; }
+        ::-webkit-scrollbar-thumb { background: #d6d3d1; }
         ::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
     </style>
 </head>
-<body class="bg-bgmain text-textmut font-sans antialiased relative overflow-x-hidden">
+<body class="bg-bgmain text-textmut font-sans antialiased relative overflow-x-hidden selection:bg-accent selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-bgmain/95 backdrop-blur-sm shadow-sm z-50 border-b border-stone-200">
+    <!-- Navigation (Minimalist) -->
+    <nav class="fixed w-full bg-bgmain/95 backdrop-blur-sm z-50 border-b border-stone-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0">
-                    <a href="#" class="font-bold text-xl text-textmain tracking-tight">FAKHRI<span class="text-accent">MRF</span></a>
+                    <a href="#" class="font-serif font-bold text-xl text-textmain tracking-widest uppercase">Fakhri<span class="text-accent italic">MRF</span></a>
                 </div>
                 <!-- Tombol Hamburger Menu (HP) -->
                 <div class="md:hidden flex items-center">
@@ -64,26 +70,24 @@
                     </button>
                 </div>
                 <!-- Menu Desktop -->
-                <div class="hidden md:flex space-x-8">
+                <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wider">
                     <a href="#about" class="text-textmut hover:text-accent transition font-medium">About</a>
                     <a href="#skills" class="text-textmut hover:text-accent transition font-medium">Skills</a>
                     <a href="#experience" class="text-textmut hover:text-accent transition font-medium">Experience</a>
                     <a href="#projects" class="text-textmut hover:text-accent transition font-medium">Projects</a>
                     <a href="#education" class="text-textmut hover:text-accent transition font-medium">Education</a>
-                    <a href="#contact" class="text-textmut hover:text-accent transition font-medium">Contact</a>
                 </div>
             </div>
         </div>
         
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-bgmain border-t border-stone-200 shadow-xl">
-            <div class="px-4 pt-2 pb-4 space-y-2">
-                <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-textmut hover:text-accent hover:bg-stone-100 transition">About</a>
-                <a href="#skills" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-textmut hover:text-accent hover:bg-stone-100 transition">Skills</a>
-                <a href="#experience" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-textmut hover:text-accent hover:bg-stone-100 transition">Experience</a>
-                <a href="#projects" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-textmut hover:text-accent hover:bg-stone-100 transition">Projects</a>
-                <a href="#education" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-textmut hover:text-accent hover:bg-stone-100 transition">Education</a>
-                <a href="#contact" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-textmut hover:text-accent hover:bg-stone-100 transition">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-bgmain border-t border-stone-300 shadow-2xl">
+            <div class="px-4 pt-2 pb-4 space-y-2 uppercase text-sm tracking-wider">
+                <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-3 font-medium text-textmut hover:text-accent hover:bg-stone-100 transition border-b border-stone-200">About</a>
+                <a href="#skills" onclick="toggleMobileMenu()" class="block px-3 py-3 font-medium text-textmut hover:text-accent hover:bg-stone-100 transition border-b border-stone-200">Skills</a>
+                <a href="#experience" onclick="toggleMobileMenu()" class="block px-3 py-3 font-medium text-textmut hover:text-accent hover:bg-stone-100 transition border-b border-stone-200">Experience</a>
+                <a href="#projects" onclick="toggleMobileMenu()" class="block px-3 py-3 font-medium text-textmut hover:text-accent hover:bg-stone-100 transition border-b border-stone-200">Projects</a>
+                <a href="#education" onclick="toggleMobileMenu()" class="block px-3 py-3 font-medium text-textmut hover:text-accent hover:bg-stone-100 transition">Education</a>
             </div>
         </div>
     </nav>
@@ -91,79 +95,85 @@
     <main id="main-content">
         
         <!-- Hero Section -->
-        <section id="hero" class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-bgalt overflow-hidden">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-8">
+        <section id="hero" class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-bgalt overflow-hidden border-b border-stone-300">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16">
                 <div class="flex-1 text-center lg:text-left max-w-2xl" data-aos="fade-right">
-                    <p class="text-accent font-semibold tracking-wide uppercase mb-3 text-sm lg:text-base">Welcome to my portfolio</p>
-                    <h1 class="text-5xl sm:text-6xl lg:text-[5rem] font-bold leading-[1.1] mb-4 tracking-tight text-textmain">
-                        Hi, I'm Nurul<br>Fakhri Ma'arif
+                    <p class="text-accent font-semibold tracking-widest uppercase mb-4 text-xs lg:text-sm">Welcome to my portfolio</p>
+                    <h1 class="text-5xl sm:text-6xl lg:text-[5.5rem] font-serif font-bold leading-[1.05] mb-6 text-textmain">
+                        Hi, I'm Nurul<br>Fakhri Ma'arif.
                     </h1>
-                    <h2 class="text-xl sm:text-2xl text-textmut font-light mb-10">
-                        Civil Engineering Graduate
+                    <h2 class="text-lg sm:text-xl text-textmut font-light mb-10 border-l-2 border-accent pl-4 text-left mx-auto lg:mx-0 max-w-lg">
+                        Civil Engineering Graduate specializing in structural supervision, project management, and data automation.
                     </h2>
-                    <div class="flex flex-wrap justify-center lg:justify-start gap-3">
-                        <a href="#experience" class="bg-accent hover:bg-accentHover text-white px-5 py-3 rounded-lg font-medium transition shadow-md shadow-accent/20">View Experience</a>
-                        <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-white text-textmain hover:bg-stone-50 border border-stone-300 px-5 py-3 rounded-lg font-medium transition shadow-sm flex items-center gap-2">
-                            <i class="fa-solid fa-download"></i> Download CV
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                        <a href="#experience" class="bg-textmain hover:bg-stone-800 text-white px-6 py-3 font-medium transition rounded-sm text-sm tracking-wider uppercase">Explore Work</a>
+                        <a href="Curriculum Vitae_Nurul Fakhri Ma'arif.pdf" download class="bg-transparent text-textmain hover:bg-stone-200 border border-stone-400 px-6 py-3 font-medium transition rounded-sm text-sm tracking-wider uppercase flex items-center gap-2">
+                            Download CV
                         </a>
                     </div>
                 </div>
                 <div class="flex-1 flex justify-center lg:justify-end" data-aos="zoom-in" data-aos-delay="200">
                     <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px]">
-                        <img src="profile.jpg" alt="Nurul Fakhri Ma'arif" class="w-full h-full object-cover rounded-full border-4 border-white shadow-2xl bg-stone-200" onerror="this.src='https://via.placeholder.com/420x420?text=Fakhri'">
+                        <!-- Menghilangkan border bulat, diganti style editorial -->
+                        <img src="profile.jpg" alt="Nurul Fakhri Ma'arif" class="w-full h-full object-cover rounded-sm shadow-xl grayscale-[20%] hover:grayscale-0 transition duration-500" onerror="this.src='https://via.placeholder.com/420x420?text=Fakhri'">
+                        <div class="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-accent"></div>
+                        <div class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-accent"></div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 bg-bgmain">
+        <section id="about" class="py-24 bg-bgmain">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-textmain mb-4">About Me</h2>
-                <div class="w-16 h-1 bg-accent mx-auto mb-8"></div>
-                <p class="text-lg text-textmut leading-relaxed text-justify md:text-center">
+                <h2 class="text-4xl font-serif font-bold text-textmain mb-6">About Me</h2>
+                <div class="w-12 h-0.5 bg-accent mx-auto mb-10"></div>
+                <p class="text-lg text-textmut leading-relaxed text-justify md:text-center font-light">
                     Civil Engineering fresh graduate from Universitas Gadjah Mada with a strong focus on construction supervision, quality control, and field operations. Possesses a solid analytical foundation combined with practical exposure to verifying field execution against shop drawings and ensuring strict adherence to technical specifications. Gained valuable hands-on experience as an intern overseeing daily construction activities and managing progress documentation. Eager to leverage strong adaptability, problem-solving abilities, and project tracking skills to ensure smooth, timely, and safe project delivery.
                 </p>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-20 bg-bgalt">
+        <section id="skills" class="py-24 bg-bgalt border-y border-stone-300">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div data-aos="fade-up">
-                    <h2 class="text-3xl font-bold text-textmain text-center mb-4">Core Competencies</h2>
-                    <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+                <div data-aos="fade-up" class="mb-16 md:flex md:justify-between md:items-end">
+                    <div>
+                        <h2 class="text-4xl font-serif font-bold text-textmain mb-4">Areas of Expertise</h2>
+                        <div class="w-12 h-0.5 bg-accent"></div>
+                    </div>
+                    <p class="text-sm text-stone-500 mt-4 md:mt-0 uppercase tracking-widest">Core Competencies</p>
                 </div>
                 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-sm border border-stone-200 hover:border-stone-300 transition" data-aos="fade-up" data-aos-delay="0">
-                        <i class="fa-solid fa-building text-3xl text-accent mb-4"></i>
-                        <h3 class="text-xl font-bold text-textmain mb-4">Structural & Field</h3>
-                        <ul class="space-y-2 text-textmut">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Structural Modeling (3D)</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Engineering Drawing Review</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Quality Control & Inspection</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Design Review & Assessment</li>
+                <div class="grid md:grid-cols-3 gap-0 border border-stone-300 bg-white">
+                    <div class="p-10 border-b md:border-b-0 md:border-r border-stone-300 hover:bg-stone-50 transition" data-aos="fade-up" data-aos-delay="0">
+                        <span class="text-4xl font-serif font-bold text-stone-200 mb-6 block">01</span>
+                        <h3 class="text-xl font-bold text-textmain mb-4 uppercase tracking-wider text-sm">Structural & Field</h3>
+                        <ul class="space-y-3 text-textmut font-light text-sm">
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> Structural Modeling (3D)</li>
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> Engineering Drawing Review</li>
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> Quality Control & Inspection</li>
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> Design Review & Assessment</li>
                         </ul>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-sm border border-stone-200 hover:border-stone-300 transition" data-aos="fade-up" data-aos-delay="150">
-                        <i class="fa-solid fa-chart-line text-3xl text-accent mb-4"></i>
-                        <h3 class="text-xl font-bold text-textmain mb-4">Project Management</h3>
-                        <ul class="space-y-2 text-textmut">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> S-Curve Variance Analysis</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Early Warning Systems</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Work Breakdown Structure</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Progress Tracking</li>
+                    <div class="p-10 border-b md:border-b-0 md:border-r border-stone-300 hover:bg-stone-50 transition" data-aos="fade-up" data-aos-delay="150">
+                        <span class="text-4xl font-serif font-bold text-stone-200 mb-6 block">02</span>
+                        <h3 class="text-xl font-bold text-textmain mb-4 uppercase tracking-wider text-sm">Project Management</h3>
+                        <ul class="space-y-3 text-textmut font-light text-sm">
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> S-Curve Variance Analysis</li>
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> Early Warning Systems</li>
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> Work Breakdown Structure</li>
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> Progress Tracking</li>
                         </ul>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-sm border border-stone-200 hover:border-stone-300 transition" data-aos="fade-up" data-aos-delay="300">
-                        <i class="fa-solid fa-code text-3xl text-accent mb-4"></i>
-                        <h3 class="text-xl font-bold text-textmain mb-4">Software & Tools</h3>
-                        <ul class="space-y-2 text-textmut">
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> AutoCAD, SAP2000, Revit</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> SketchUp, Enscape</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Python, Excel VBA</li>
-                            <li class="flex items-start"><i class="fa-solid fa-check text-accent mt-1 mr-3"></i> Microsoft Office</li>
+                    <div class="p-10 hover:bg-stone-50 transition" data-aos="fade-up" data-aos-delay="300">
+                        <span class="text-4xl font-serif font-bold text-stone-200 mb-6 block">03</span>
+                        <h3 class="text-xl font-bold text-textmain mb-4 uppercase tracking-wider text-sm">Software & Tools</h3>
+                        <ul class="space-y-3 text-textmut font-light text-sm">
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> AutoCAD, SAP2000, Revit</li>
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> SketchUp, Enscape</li>
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> Python, Excel VBA</li>
+                            <li class="flex items-start"><span class="text-accent mr-3 font-bold">+</span> Microsoft Office</li>
                         </ul>
                     </div>
                 </div>
@@ -171,82 +181,102 @@
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="py-20 bg-bgmain">
+        <section id="experience" class="py-24 bg-bgmain">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div data-aos="fade-up">
-                    <h2 class="text-3xl font-bold text-textmain text-center mb-4">Professional Experience</h2>
-                    <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+                <div data-aos="fade-up" class="mb-16 text-center">
+                    <h2 class="text-4xl font-serif font-bold text-textmain mb-4">Professional Experience</h2>
+                    <div class="w-12 h-0.5 bg-accent mx-auto"></div>
                 </div>
 
-                <div class="space-y-8">
-                    <!-- Internship 1: Pasar Terban (INLINE GALLERY) -->
-                    <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm border-l-4 border-l-accent hover:shadow-md transition" data-aos="fade-right">
-                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
+                <div class="space-y-12">
+                    <!-- Internship 1: Pasar Terban -->
+                    <div class="bg-white p-8 md:p-12 border border-stone-300 shadow-sm rounded-sm" data-aos="fade-up">
+                        <div class="flex flex-col md:flex-row justify-between md:items-start mb-6">
                             <div>
-                                <h3 class="text-2xl font-bold text-textmain">Site Supervisor Intern</h3>
-                                <h4 class="text-lg text-textmut font-medium mt-1">PT. ARSS Baru KSO PT. Intimulya Multi Kencana | Terban, Yogyakarta</h4>
+                                <h3 class="text-2xl font-serif font-bold text-textmain">Site Supervisor Intern</h3>
+                                <h4 class="text-md text-textmut font-medium mt-2">PT. ARSS Baru KSO PT. Intimulya Multi Kencana | Terban, Yogyakarta</h4>
                             </div>
-                            <span class="inline-block bg-orange-50 text-accent border border-orange-200 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Jan 2025 - Feb 2025</span>
+                            <span class="inline-block border border-stone-300 text-stone-500 text-xs px-4 py-2 uppercase tracking-widest font-semibold mt-4 md:mt-0">Jan 2025 - Feb 2025</span>
                         </div>
-                        <ul class="list-disc pl-5 text-textmut mb-6 space-y-2 leading-relaxed marker:text-accent">
+                        <ul class="list-disc pl-5 text-textmut font-light mb-8 space-y-3 leading-relaxed marker:text-accent">
                             <li>Assisted the site management team in overseeing daily construction activities for Proyek Revitalisasi Pasar Terban.</li>
                             <li>Inspected concrete reinforcement, formwork installations, and casting processes to ensure work quality aligns with structural technical specifications and shop drawings.</li>
                             <li>Monitored daily construction activities, gaining hands-on understanding of structural integrity and translating design elements into safe field execution.</li>
                             <li>Documented daily progress and generated CAD outputs as a weekly progress summary for Revit integration.</li>
                         </ul>
-                        <div class="flex gap-2 flex-wrap mb-6">
-                            <span class="bg-stone-50 border border-stone-200 text-textmut text-xs px-3 py-1 rounded">Progress Control</span>
-                            <span class="bg-stone-50 border border-stone-200 text-textmut text-xs px-3 py-1 rounded">Technical Inspection</span>
-                            <span class="bg-stone-50 border border-stone-200 text-textmut text-xs px-3 py-1 rounded">Quality Control</span>
+                        <div class="flex gap-3 flex-wrap mb-8">
+                            <span class="bg-stone-100 text-stone-600 text-xs px-3 py-1 font-medium tracking-wide">Progress Control</span>
+                            <span class="bg-stone-100 text-stone-600 text-xs px-3 py-1 font-medium tracking-wide">Technical Inspection</span>
+                            <span class="bg-stone-100 text-stone-600 text-xs px-3 py-1 font-medium tracking-wide">Quality Control</span>
                         </div>
                         
-                        <!-- Inline Gallery Terban -->
-                        <div class="mt-6 border-t border-stone-200 pt-6">
-                            <h5 class="text-sm font-bold text-textmain mb-3 uppercase tracking-wider"><i class="fa-solid fa-images mr-2"></i>Project Documentation</h5>
-                            <div class="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory hide-scroll">
-                                <img src="KP_2-1.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_2-2.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_2-3.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_2-4.JPG" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_2-5.jpg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_2-6.jpg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_2-7.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_2-8.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
+                        <!-- Inline Gallery Terban dengan Navigasi -->
+                        <div class="border-t border-stone-200 pt-8 group/gallery relative">
+                            <h5 class="text-xs font-bold text-textmain mb-4 uppercase tracking-widest">Project Documentation</h5>
+                            
+                            <!-- Tombol Scroll Desktop (Kiri) -->
+                            <button onclick="scrollGallery('gallery-terban', -1)" class="absolute left-0 top-[60%] -translate-y-1/2 -ml-4 w-10 h-10 bg-white border border-stone-300 shadow-md flex items-center justify-center text-stone-600 opacity-0 group-hover/gallery:opacity-100 transition-opacity hidden md:flex hover:bg-stone-50 z-10">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+
+                            <div id="gallery-terban" class="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory hide-scroll scroll-smooth">
+                                <img src="KP_2-1.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_2-2.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_2-3.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_2-4.JPG" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_2-5.jpg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_2-6.jpg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_2-7.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_2-8.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
                             </div>
-                            <p class="text-xs text-stone-400 mt-1 italic">*Swipe or scroll horizontally to view more images.</p>
+
+                            <!-- Tombol Scroll Desktop (Kanan) -->
+                            <button onclick="scrollGallery('gallery-terban', 1)" class="absolute right-0 top-[60%] -translate-y-1/2 -mr-4 w-10 h-10 bg-white border border-stone-300 shadow-md flex items-center justify-center text-stone-600 opacity-0 group-hover/gallery:opacity-100 transition-opacity hidden md:flex hover:bg-stone-50 z-10">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Internship 2: Jababeka (INLINE GALLERY) -->
-                    <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm border-l-4 border-l-accent hover:shadow-md transition" data-aos="fade-right" data-aos-delay="150">
-                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
+                    <!-- Internship 2: Jababeka -->
+                    <div class="bg-white p-8 md:p-12 border border-stone-300 shadow-sm rounded-sm" data-aos="fade-up">
+                        <div class="flex flex-col md:flex-row justify-between md:items-start mb-6">
                             <div>
-                                <h3 class="text-2xl font-bold text-textmain">Steel Structure Drafter Engineer</h3>
-                                <h4 class="text-lg text-textmut font-medium mt-1">PT. Bhineka Cipta Karya | JABABEKA, Cikarang</h4>
+                                <h3 class="text-2xl font-serif font-bold text-textmain">Steel Structure Drafter Engineer</h3>
+                                <h4 class="text-md text-textmut font-medium mt-2">PT. Bhineka Cipta Karya | JABABEKA, Cikarang</h4>
                             </div>
-                            <span class="inline-block bg-orange-50 text-accent border border-orange-200 text-sm px-4 py-1 rounded-full font-semibold mt-3 md:mt-0">Jan 2024 - Feb 2024</span>
+                            <span class="inline-block border border-stone-300 text-stone-500 text-xs px-4 py-2 uppercase tracking-widest font-semibold mt-4 md:mt-0">Jan 2024 - Feb 2024</span>
                         </div>
-                        <ul class="list-disc pl-5 text-textmut mb-6 space-y-2 leading-relaxed marker:text-accent">
+                        <ul class="list-disc pl-5 text-textmut font-light mb-8 space-y-3 leading-relaxed marker:text-accent">
                             <li>Shadowed engineering teams during field operations to observe structural quality control procedures, including soil testing and foundational works.</li>
                             <li>Actively enhanced structural modeling and detailing capabilities through intensive practical training in Tekla Structures.</li>
                         </ul>
-                        <div class="flex gap-2 flex-wrap mb-6">
-                            <span class="bg-stone-50 border border-stone-200 text-textmut text-xs px-3 py-1 rounded">Field Supervision</span>
-                            <span class="bg-stone-50 border border-stone-200 text-textmut text-xs px-3 py-1 rounded">BIM (Tekla)</span>
+                        <div class="flex gap-3 flex-wrap mb-8">
+                            <span class="bg-stone-100 text-stone-600 text-xs px-3 py-1 font-medium tracking-wide">Field Supervision</span>
+                            <span class="bg-stone-100 text-stone-600 text-xs px-3 py-1 font-medium tracking-wide">BIM (Tekla)</span>
                         </div>
 
-                        <!-- Inline Gallery Jababeka -->
-                        <div class="mt-6 border-t border-stone-200 pt-6">
-                            <h5 class="text-sm font-bold text-textmain mb-3 uppercase tracking-wider"><i class="fa-solid fa-images mr-2"></i>Field Assessment</h5>
-                            <div class="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory hide-scroll">
-                                <img src="KP_1-1.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_1-2.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_1-3.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_1-4.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_1-5.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
-                                <img src="KP_1-6.jpeg" class="h-48 md:h-64 w-auto object-cover rounded shadow-sm border border-stone-200 snap-center shrink-0">
+                        <!-- Inline Gallery Jababeka dengan Navigasi -->
+                        <div class="border-t border-stone-200 pt-8 group/gallery relative">
+                            <h5 class="text-xs font-bold text-textmain mb-4 uppercase tracking-widest">Field Assessment</h5>
+                            
+                            <!-- Tombol Scroll Kiri -->
+                            <button onclick="scrollGallery('gallery-jababeka', -1)" class="absolute left-0 top-[60%] -translate-y-1/2 -ml-4 w-10 h-10 bg-white border border-stone-300 shadow-md flex items-center justify-center text-stone-600 opacity-0 group-hover/gallery:opacity-100 transition-opacity hidden md:flex hover:bg-stone-50 z-10">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+
+                            <div id="gallery-jababeka" class="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory hide-scroll scroll-smooth">
+                                <img src="KP_1-1.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_1-2.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_1-3.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_1-4.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_1-5.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
+                                <img src="KP_1-6.jpeg" class="h-56 md:h-72 w-auto object-cover border border-stone-200 snap-center shrink-0">
                             </div>
-                            <p class="text-xs text-stone-400 mt-1 italic">*Swipe or scroll horizontally to view more images.</p>
+
+                            <!-- Tombol Scroll Kanan -->
+                            <button onclick="scrollGallery('gallery-jababeka', 1)" class="absolute right-0 top-[60%] -translate-y-1/2 -mr-4 w-10 h-10 bg-white border border-stone-300 shadow-md flex items-center justify-center text-stone-600 opacity-0 group-hover/gallery:opacity-100 transition-opacity hidden md:flex hover:bg-stone-50 z-10">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -254,110 +284,122 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-20 bg-bgalt">
+        <section id="projects" class="py-24 bg-bgalt border-t border-stone-300">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div data-aos="fade-up">
-                    <h2 class="text-3xl font-bold text-textmain text-center mb-4">Projects & Organization</h2>
-                    <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+                <div data-aos="fade-up" class="mb-16 text-center">
+                    <h2 class="text-4xl font-serif font-bold text-textmain mb-4">Projects & Organization</h2>
+                    <div class="w-12 h-0.5 bg-accent mx-auto"></div>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Project 1: Skripsi (INLINE IFRAME) -->
-                    <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm flex flex-col h-full hover:shadow-md transition md:col-span-2" data-aos="fade-up" data-aos-delay="0">
-                        <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Final Project / Thesis</span>
-                        <h3 class="text-xl font-bold text-textmain mb-4">Construction Project Monitoring and Delay Risk Detection System</h3>
-                        <ul class="list-disc pl-4 text-textmut mb-6 space-y-2 text-sm marker:text-accent">
+                    <div class="bg-white p-8 md:p-10 border border-stone-300 shadow-sm rounded-sm flex flex-col h-full md:col-span-2" data-aos="fade-up" data-aos-delay="0">
+                        <span class="text-xs font-bold text-accent uppercase tracking-widest mb-3 block">Final Project / Thesis</span>
+                        <h3 class="text-2xl font-serif font-bold text-textmain mb-6">Construction Project Monitoring and Delay Risk Detection System</h3>
+                        <ul class="list-disc pl-5 text-textmut font-light mb-8 space-y-3 marker:text-accent">
                             <li>Completed a thesis titled "PENGEMBANGAN SISTEM MONITORING DAN DETEKSI RISIKO KETERLAMBATAN PROYEK KONSTRUKSI BERBASIS INTEGRASI EXCEL VBA DAN MACHINE LEARNING".</li>
                             <li>Developed an early warning system to track work schedules and utilized S-curve analysis to evaluate and compare planned versus actual project progress.</li>
                             <li>Demonstrated advanced computational programming skills (Python/VBA) through machine learning implementation.</li>
                         </ul>
-                        <div class="flex gap-2 flex-wrap mb-6">
-                            <span class="bg-stone-50 text-textmut border border-stone-200 text-xs px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-stone-50 text-textmut border border-stone-200 text-xs px-3 py-1 rounded-full">Excel VBA</span>
+                        <div class="flex gap-3 flex-wrap mb-8">
+                            <span class="border border-stone-200 text-stone-600 text-xs px-3 py-1 font-medium tracking-wide">Python</span>
+                            <span class="border border-stone-200 text-stone-600 text-xs px-3 py-1 font-medium tracking-wide">Excel VBA</span>
                         </div>
                         
-                        <!-- Inline Iframe Thesis -->
-                        <div class="mt-4 border-t border-stone-200 pt-6">
-                            <h5 class="text-sm font-bold text-textmain mb-3 uppercase tracking-wider"><i class="fa-solid fa-file-excel mr-2"></i>Live Excel Dashboard</h5>
-                            <div class="w-full h-[500px] rounded-lg overflow-hidden border border-stone-200 shadow-inner bg-stone-100">
+                        <div class="border-t border-stone-200 pt-8">
+                            <h5 class="text-xs font-bold text-textmain mb-4 uppercase tracking-widest">Live Excel Dashboard</h5>
+                            <div class="w-full h-[500px] border border-stone-300 bg-stone-100">
                                 <iframe src="https://1drv.ms/x/c/2b64307f0748c130/IQRtwPrDN48mSYJ2VYPbIv2sAfeXETpM0S6JePOgN-chY-E" class="w-full h-full" frameborder="0" scrolling="yes"></iframe>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 2: Capstone (INLINE IFRAME) -->
-                    <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm flex flex-col h-full hover:shadow-md transition md:col-span-2" data-aos="fade-up" data-aos-delay="150">
-                        <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">Capstone Project</span>
-                        <h3 class="text-xl font-bold text-textmain mb-4">Sabo Dam Building Design</h3>
-                        <ul class="list-disc pl-4 text-textmut mb-6 space-y-2 text-sm marker:text-accent">
+                    <!-- Project 2: Capstone (SLIDER VIDEO) -->
+                    <div class="bg-white p-8 md:p-10 border border-stone-300 shadow-sm rounded-sm flex flex-col h-full md:col-span-2" data-aos="fade-up" data-aos-delay="0">
+                        <span class="text-xs font-bold text-accent uppercase tracking-widest mb-3 block">Capstone Project</span>
+                        <h3 class="text-2xl font-serif font-bold text-textmain mb-6">Sabo Dam Building Design</h3>
+                        <ul class="list-disc pl-5 text-textmut font-light mb-8 space-y-3 marker:text-accent">
                             <li>Collaborated within a multidisciplinary engineering team to formulate a comprehensive, ready-to-build design for a Sabo Dam located on the Gendol River.</li>
                             <li>Conducted rigorous structural calculations and stability analyses to ensure the structural integrity and safety of the dam.</li>
                             <li>Designed the geometric dimensions and physical structural layout by integrating hydrological data and topographical site conditions.</li>
                             <li>Executed complete 3D modeling and rendering, translating raw ground contour data into a detailed visual representation of the final structure.</li>
                         </ul>
-                        <div class="flex gap-2 flex-wrap mb-6">
-                            <span class="bg-stone-50 text-textmut border border-stone-200 text-xs px-3 py-1 rounded-full">Structural Analysis</span>
-                            <span class="bg-stone-50 text-textmut border border-stone-200 text-xs px-3 py-1 rounded-full">Building Design</span>
-                            <span class="bg-stone-50 text-textmut border border-stone-200 text-xs px-3 py-1 rounded-full">3D Rendering</span>
+                        <div class="flex gap-3 flex-wrap mb-8">
+                            <span class="border border-stone-200 text-stone-600 text-xs px-3 py-1 font-medium tracking-wide">Structural Analysis</span>
+                            <span class="border border-stone-200 text-stone-600 text-xs px-3 py-1 font-medium tracking-wide">Building Design</span>
+                            <span class="border border-stone-200 text-stone-600 text-xs px-3 py-1 font-medium tracking-wide">3D Rendering</span>
                         </div>
 
-                        <!-- Inline Iframes Capstone (Grid) -->
-                        <div class="mt-4 border-t border-stone-200 pt-6">
-                            <h5 class="text-sm font-bold text-textmain mb-4 uppercase tracking-wider"><i class="fa-solid fa-play mr-2"></i>3D Render Videos</h5>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="w-full relative rounded overflow-hidden shadow-sm border border-stone-200" style="padding-top: 56.25%;">
-                                    <iframe class="absolute top-0 left-0 w-full h-full bg-stone-100" src="https://drive.google.com/file/d/1t_yW3E-vji1auWl3TmhG2eewEuKTpIH4/preview" frameborder="0" allowfullscreen></iframe>
+                        <!-- Inline Iframes Capstone (Slider) -->
+                        <div class="border-t border-stone-200 pt-8 group/video relative">
+                            <h5 class="text-xs font-bold text-textmain mb-4 uppercase tracking-widest">3D Render Videos</h5>
+                            
+                            <!-- Tombol Scroll Kiri (Video) -->
+                            <button onclick="scrollGallery('video-capstone', -1)" class="absolute left-0 top-[60%] -translate-y-1/2 -ml-4 w-10 h-10 bg-white border border-stone-300 shadow-md flex items-center justify-center text-stone-600 opacity-0 group-hover/video:opacity-100 transition-opacity hidden md:flex hover:bg-stone-50 z-10">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+
+                            <!-- Container Slider Video -->
+                            <!-- Menggunakan w-[85%] md:w-[60%] agar video sebelahnya terlihat terpotong di tepi, menandakan bisa digeser -->
+                            <div id="video-capstone" class="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory hide-scroll scroll-smooth">
+                                <div class="w-[90%] md:w-[70%] shrink-0 snap-center relative border border-stone-300 bg-stone-100" style="aspect-ratio: 16/9;">
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://drive.google.com/file/d/1t_yW3E-vji1auWl3TmhG2eewEuKTpIH4/preview" frameborder="0" allowfullscreen></iframe>
                                 </div>
-                                <div class="w-full relative rounded overflow-hidden shadow-sm border border-stone-200" style="padding-top: 56.25%;">
-                                    <iframe class="absolute top-0 left-0 w-full h-full bg-stone-100" src="https://drive.google.com/file/d/1gKs48k1cTR9Z1fHbga7tbjgs-PY-IPwO/preview" frameborder="0" allowfullscreen></iframe>
+                                <div class="w-[90%] md:w-[70%] shrink-0 snap-center relative border border-stone-300 bg-stone-100" style="aspect-ratio: 16/9;">
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://drive.google.com/file/d/1gKs48k1cTR9Z1fHbga7tbjgs-PY-IPwO/preview" frameborder="0" allowfullscreen></iframe>
                                 </div>
-                                <div class="w-full relative rounded overflow-hidden shadow-sm border border-stone-200" style="padding-top: 56.25%;">
-                                    <iframe class="absolute top-0 left-0 w-full h-full bg-stone-100" src="https://drive.google.com/file/d/1ogiPs92A8fa3Wij2-8GGAPHrBb6VxeG-/preview" frameborder="0" allowfullscreen></iframe>
+                                <div class="w-[90%] md:w-[70%] shrink-0 snap-center relative border border-stone-300 bg-stone-100" style="aspect-ratio: 16/9;">
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://drive.google.com/file/d/1ogiPs92A8fa3Wij2-8GGAPHrBb6VxeG-/preview" frameborder="0" allowfullscreen></iframe>
                                 </div>
-                                <div class="w-full relative rounded overflow-hidden shadow-sm border border-stone-200" style="padding-top: 56.25%;">
-                                    <iframe class="absolute top-0 left-0 w-full h-full bg-stone-100" src="https://drive.google.com/file/d/1xOkmnGrv_KZfLVWn9uZIJrUE3NLb_AEt/preview" frameborder="0" allowfullscreen></iframe>
+                                <div class="w-[90%] md:w-[70%] shrink-0 snap-center relative border border-stone-300 bg-stone-100" style="aspect-ratio: 16/9;">
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://drive.google.com/file/d/1xOkmnGrv_KZfLVWn9uZIJrUE3NLb_AEt/preview" frameborder="0" allowfullscreen></iframe>
                                 </div>
                             </div>
+
+                            <!-- Tombol Scroll Kanan (Video) -->
+                            <button onclick="scrollGallery('video-capstone', 1)" class="absolute right-0 top-[60%] -translate-y-1/2 -mr-4 w-10 h-10 bg-white border border-stone-300 shadow-md flex items-center justify-center text-stone-600 opacity-0 group-hover/video:opacity-100 transition-opacity hidden md:flex hover:bg-stone-50 z-10">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
 
                     <!-- Organization 1 -->
-                    <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm flex flex-col h-full hover:shadow-md transition" data-aos="fade-up" data-aos-delay="0">
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="text-xs font-bold text-accent uppercase tracking-wider">Organization</span>
-                            <span class="text-xs text-stone-400 font-semibold">Dec 2023 - Jul 2024</span>
+                    <div class="bg-white p-8 border border-stone-300 shadow-sm rounded-sm flex flex-col h-full" data-aos="fade-up" data-aos-delay="0">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-bold text-accent uppercase tracking-widest">Organization</span>
+                            <span class="text-xs text-stone-400 font-semibold tracking-wider">Dec '23 - Jul '24</span>
                         </div>
-                        <h3 class="text-xl font-bold text-textmain mb-4">Head of Technical Division - PKTSL FT UGM</h3>
-                        <ul class="list-disc pl-4 text-textmut flex-grow space-y-2 text-sm marker:text-accent">
+                        <h3 class="text-lg font-serif font-bold text-textmain mb-4">Head of Technical Division<br>PKTSL FT UGM</h3>
+                        <ul class="list-disc pl-4 text-textmut font-light flex-grow space-y-2 text-sm marker:text-accent">
                             <li>Led a team of 24 students in planning and executing departmental programs to fulfill civil engineering software requirements.</li>
-                            <li>Drove cross-divisional collaboration to execute departmental events and organized internal upskilling to build a communicative, highly collaborative team.</li>
+                            <li>Drove cross-divisional collaboration to execute departmental events and organized internal upskilling.</li>
                         </ul>
                     </div>
 
                     <!-- Organization 2 -->
-                    <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm flex flex-col h-full hover:shadow-md transition" data-aos="fade-up" data-aos-delay="150">
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="text-xs font-bold text-accent uppercase tracking-wider">Organization</span>
-                            <span class="text-xs text-stone-400 font-semibold">Apr 2022 - Dec 2023</span>
+                    <div class="bg-white p-8 border border-stone-300 shadow-sm rounded-sm flex flex-col h-full" data-aos="fade-up" data-aos-delay="150">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-bold text-accent uppercase tracking-widest">Organization</span>
+                            <span class="text-xs text-stone-400 font-semibold tracking-wider">Apr '22 - Dec '23</span>
                         </div>
-                        <h3 class="text-xl font-bold text-textmain mb-4">Staff of Technical Division - PKTSL FT UGM</h3>
-                        <ul class="list-disc pl-4 text-textmut flex-grow space-y-2 text-sm marker:text-accent">
+                        <h3 class="text-lg font-serif font-bold text-textmain mb-4">Staff of Technical Division<br>PKTSL FT UGM</h3>
+                        <ul class="list-disc pl-4 text-textmut font-light flex-grow space-y-2 text-sm marker:text-accent">
                             <li>Collaborated with peers to deliver practical software training accommodating students' technical needs.</li>
-                            <li>Actively communicated across divisions to support joint events and participated in peer-to-peer training to enhance collective team capabilities.</li>
+                            <li>Actively communicated across divisions to support joint events and participated in peer-to-peer training.</li>
                         </ul>
                     </div>
 
                     <!-- Organization 3 -->
-                    <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm flex flex-col h-full md:col-span-2 hover:shadow-md transition" data-aos="fade-up" data-aos-delay="0">
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="text-xs font-bold text-accent uppercase tracking-wider">National Event Organization</span>
-                            <span class="text-xs text-stone-400 font-semibold">Dec 2021 - Nov 2022</span>
+                    <div class="bg-white p-8 border border-stone-300 shadow-sm rounded-sm flex flex-col h-full md:col-span-2" data-aos="fade-up" data-aos-delay="0">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-bold text-accent uppercase tracking-widest">National Event</span>
+                            <span class="text-xs text-stone-400 font-semibold tracking-wider">Dec '21 - Nov '22</span>
                         </div>
-                        <h3 class="text-xl font-bold text-textmain mb-1">Staff of Public Relation Division - FCEC</h3>
-                        <h4 class="text-sm font-medium text-textmut mb-4">Civil In Action (CIA UGM)</h4>
-                        <ul class="list-disc pl-4 text-textmut space-y-2 text-sm md:text-base marker:text-accent">
+                        <h3 class="text-xl font-serif font-bold text-textmain mb-1">Staff of Public Relation Division - FCEC</h3>
+                        <h4 class="text-sm font-medium text-textmut mb-5 uppercase tracking-widest">Civil In Action (CIA UGM)</h4>
+                        <ul class="list-disc pl-5 text-textmut font-light space-y-2 text-sm md:text-base marker:text-accent">
                             <li>Acted as the primary liaison between the organizing committee and educational institutions.</li>
-                            <li>Successfully executed nationwide outreach to invite high schools across Indonesia to participate in the FCEC paper competition, ensuring clear communication and smooth coordination with prospective participants.</li>
+                            <li>Successfully executed nationwide outreach to invite high schools across Indonesia to participate in the FCEC paper competition.</li>
                         </ul>
                     </div>
                 </div>
@@ -365,69 +407,69 @@
         </section>
 
         <!-- Education Section -->
-        <section id="education" class="py-20 bg-bgmain">
+        <section id="education" class="py-24 bg-bgmain">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div data-aos="fade-up">
-                    <h2 class="text-3xl font-bold text-textmain text-center mb-4">Education</h2>
-                    <div class="w-16 h-1 bg-accent mx-auto mb-12"></div>
+                <div data-aos="fade-up" class="mb-16 text-center">
+                    <h2 class="text-4xl font-serif font-bold text-textmain mb-4">Education</h2>
+                    <div class="w-12 h-0.5 bg-accent mx-auto"></div>
                 </div>
                 
-                <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm border-l-4 border-l-accent flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-md transition mb-6" data-aos="fade-left" data-aos-delay="0">
+                <div class="bg-white p-8 border border-stone-300 border-l-4 border-l-accent shadow-sm rounded-sm flex flex-col md:flex-row justify-between items-start md:items-center transition mb-6" data-aos="fade-left" data-aos-delay="0">
                     <div>
-                        <h3 class="text-2xl font-bold text-textmain mb-1">Universitas Gadjah Mada (UGM)</h3>
+                        <h3 class="text-2xl font-serif font-bold text-textmain mb-2">Universitas Gadjah Mada (UGM)</h3>
                         <p class="text-lg text-textmut font-medium mb-1">Bachelor of Civil Engineering</p>
-                        <p class="text-stone-400">Concentration in Structural Engineering</p>
+                        <p class="text-stone-500 font-light text-sm">Concentration in Structural Engineering</p>
                     </div>
-                    <div class="mt-4 md:mt-0 text-left md:text-right">
+                    <div class="mt-6 md:mt-0 text-left md:text-right">
                         <span class="block text-accent font-bold text-lg">GPA: 2.87 / 4.00</span>
-                        <span class="block text-stone-400 text-sm mt-1">Aug 2021 - Aug 2026</span>
+                        <span class="block text-stone-400 text-sm mt-1 uppercase tracking-widest font-semibold text-xs">Aug '21 - Aug '26</span>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-xl border border-stone-200 shadow-sm border-l-4 border-l-stone-300 flex flex-col md:flex-row justify-between items-start md:items-center hover:shadow-md transition" data-aos="fade-left" data-aos-delay="150">
+                <div class="bg-white p-8 border border-stone-300 border-l-4 border-l-stone-300 shadow-sm rounded-sm flex flex-col md:flex-row justify-between items-start md:items-center transition" data-aos="fade-left" data-aos-delay="150">
                     <div>
-                        <h3 class="text-2xl font-bold text-textmain mb-1">SMAN 78 Jakarta</h3>
+                        <h3 class="text-2xl font-serif font-bold text-textmain mb-2">SMAN 78 Jakarta</h3>
                         <p class="text-lg text-textmut font-medium mb-1">Senior High School</p>
-                        <p class="text-stone-400">Science Major (MIPA)</p>
+                        <p class="text-stone-500 font-light text-sm">Science Major (MIPA)</p>
                     </div>
-                    <div class="mt-4 md:mt-0 text-left md:text-right">
-                        <span class="block text-stone-400 text-sm mt-1">Jul 2018 - Jul 2021</span>
+                    <div class="mt-6 md:mt-0 text-left md:text-right">
+                        <span class="block text-stone-400 text-sm mt-1 uppercase tracking-widest font-semibold text-xs">Jul '18 - Jul '21</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-bgalt text-textmain">
+        <section id="contact" class="py-24 bg-textmain text-bgmain">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="zoom-in">
-                <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
-                <div class="w-16 h-1 bg-accent mx-auto mb-10"></div>
-                <p class="text-textmut mb-10">Interested in discussing job opportunities or collaborations? Feel free to reach out through the contacts below.</p>
+                <h2 class="text-4xl font-serif font-bold mb-6">Let's Connect</h2>
+                <div class="w-12 h-0.5 bg-accent mx-auto mb-10"></div>
+                <p class="text-stone-400 mb-12 font-light text-lg">Interested in discussing job opportunities or collaborations?<br>Feel free to reach out through the contacts below.</p>
                 
                 <div class="flex flex-col md:flex-row justify-center gap-6">
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fakhri31102@gmail.com&su=Inquiry%20from%20Portfolio" target="_blank" class="flex items-center justify-center gap-3 bg-white hover:bg-stone-50 border border-stone-200 hover:border-accent px-6 py-4 rounded-lg transition shadow-sm">
-                        <i class="fa-solid fa-envelope text-xl text-accent"></i>
-                        <span class="font-medium text-textmain">fakhri31102@gmail.com</span>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fakhri31102@gmail.com&su=Inquiry%20from%20Portfolio" target="_blank" class="flex items-center justify-center gap-4 bg-transparent hover:bg-stone-800 border border-stone-700 px-8 py-4 rounded-sm transition">
+                        <i class="fa-solid fa-envelope text-accent"></i>
+                        <span class="font-medium tracking-wide text-sm">fakhri31102@gmail.com</span>
                     </a>
-                    <a href="https://wa.me/6281299645659" target="_blank" class="flex items-center justify-center gap-3 bg-white hover:bg-stone-50 border border-stone-200 hover:border-accent px-6 py-4 rounded-lg transition shadow-sm">
-                        <i class="fa-solid fa-phone text-xl text-accent"></i>
-                        <span class="font-medium text-textmain">+62 812-9964-5659</span>
+                    <a href="https://wa.me/6281299645659" target="_blank" class="flex items-center justify-center gap-4 bg-transparent hover:bg-stone-800 border border-stone-700 px-8 py-4 rounded-sm transition">
+                        <i class="fa-solid fa-phone text-accent"></i>
+                        <span class="font-medium tracking-wide text-sm">+62 812-9964-5659</span>
                     </a>
-                    <a href="https://www.linkedin.com/in/fakhrimrf/" target="_blank" class="flex items-center justify-center gap-3 bg-white hover:bg-stone-50 border border-stone-200 hover:border-accent px-6 py-4 rounded-lg transition shadow-sm">
-                        <i class="fa-brands fa-linkedin text-xl text-accent"></i>
-                        <span class="font-medium text-textmain">linkedin.com/in/fakhrimrf/</span>
+                    <a href="https://www.linkedin.com/in/fakhrimrf/" target="_blank" class="flex items-center justify-center gap-4 bg-transparent hover:bg-stone-800 border border-stone-700 px-8 py-4 rounded-sm transition">
+                        <i class="fa-brands fa-linkedin text-accent"></i>
+                        <span class="font-medium tracking-wide text-sm">/in/fakhrimrf/</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <footer class="bg-textmain text-stone-400 py-6 text-center text-sm">
-            <p>&copy; 2026 Nurul Fakhri Ma'arif. All rights reserved.</p>
+        <footer class="bg-black text-stone-500 py-8 text-center text-sm tracking-widest uppercase">
+            <p>&copy; 2026 Nurul Fakhri Ma'arif.</p>
         </footer>
 
     </main>
 
-    <!-- Script Minimal Saja (Karena Modal Dihapus) -->
+    <!-- AOS JS & Custom Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
@@ -436,9 +478,23 @@
             offset: 100
         });
 
+        // Toggle Mobile Menu
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+        }
+
+        // Fungsi Horizontal Scroll untuk Gallery Foto & Video Slider
+        function scrollGallery(containerId, direction) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            // Geser sejauh 70% dari lebar layar kontainer saat ini
+            const scrollAmount = container.clientWidth * 0.7;
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
         }
     </script>
 </body>
